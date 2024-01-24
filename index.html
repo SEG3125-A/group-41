@@ -12,49 +12,52 @@
         <h1>Rawakore</h1>
     </div>
     <div class="tabs">
-        <button class="tablink active" onclick="openSection(event, 'client')">Client</button>
-        <button class="tablink" onclick="openSection(event, 'product')">Product</button>
-        <button class="tablink" onclick="openSection(event, 'cart')">Cart</button>
+        <button class="tablink active" onclick="openSection(event, 'clientSect')">Client</button>
+        <button class="tablink" onclick="openSection(event, 'productsSect')">Product</button>
+        <button class="tablink" onclick="openSection(event, 'cartSect')">Cart</button>
     </div>
-    <div id="clientSect" class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Welcome to our Running store</h2>
-                <h2>Client information</h2>
-            </div>
-            <div>
-                <p>Choose a running gear you're interested</p>
-                <select name="category" id="category" onchange="populateProducts(this.id, 'listProducts')">
-                    <option></option>
-                    <option value="videoGame">Video Game</option>
-                    <option value="electronic">Electronics</option>
-                    <option value="appliances">Appliances</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div id="productsSect" class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Your targeted products</h2>
-                <p>Selection of products based on your selection</p>
-            </div>
-            <div id="listProducts">
-            
-            </div>
-            <button id="add" type="button" class="block" onclick="addToCart()">Add to cart</button>
 
- 
-        </div>
-    </div>
-    <div id="cartSect" class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Your cart</h2>
-                <p>Selection of products based on your selection</p>
+    <div id="sections">
+        <div id="clientSect" class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Welcome to our store</h2>
+                    <h2>Client information</h2>
+                </div>
+                <div>
+                    <p>Choose a section you're interested in</p>
+                    <select name="category" id="category" onchange="populateProducts(this.id, 'listProducts')">
+                        <option></option>
+                        <option value="videoGame">Video Game</option>
+                        <option value="electronic">Electronics</option>
+                        <option value="appliances">Appliances</option>
+                    </select>
+                </div>
             </div>
-            <div id="cart">
-                <p>Cart is empty</p>
+        </div>
+        <div id="productsSect" class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Your targeted products</h2>
+                    <p>Selection of products based on your selection</p>
+                </div>
+                <div id="listProducts">
+                
+                </div>
+                <button id="add" type="button" class="block" onclick="addToCart()">Add to cart</button>
+    
+     
+            </div>
+        </div>
+        <div id="cartSect" class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Your cart</h2>
+                    <p>Selection of products based on your selection</p>
+                </div>
+                <div id="cart">
+                    <p>Cart is empty</p>
+                </div>
             </div>
         </div>
     </div>

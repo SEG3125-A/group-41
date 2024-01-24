@@ -1,10 +1,9 @@
 function openSection(event, sectionName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    var i, sections, tablinks;
+    // Go over every child of the element with id="sections" and hide it
+    sections = document.getElementById("sections");
+    for (i = 0; i < sections.children.length; i++) {
+        sections.children[i].style.display = "none";
     }
     document.getElementById(sectionName).style.display = "block";
     event.currentTarget.className += " active";
