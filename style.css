@@ -1,42 +1,48 @@
-#clientSect, #productsSect, #cartSect {
-    display: none;
+#clientSect,
+#productsSect,
+#cartSect {
+  display: none;
 }
 
 .sections {
-    background-color: #15ff00;
-
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .tabs {
-    overflow: hidden;
-    border: 1px solid #000000;
-    background-color: #15ff00;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  background-color: wheat;
 }
 
 .tabs button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-  }
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
 
-  /* Change background color of buttons on hover */
+/* Change background color of buttons on hover */
 .tabs button:hover {
-    background-color: #13df00;
-  }
-  
-  /* Create an active/current tablink class */
+  background-color: #60b359;
+  color: white;
+}
+
+/* Create an active/current tablink class */
 .tabs button.active {
-    background-color: #0fb100;
-  }
-  
-  /* Style the tab content */
-  .container {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #000000;
-    border-top: none;
-  }
+  background-color: #4e7a4a;
+  color: white;
+}
+
+/* Style the tab content */
+.container {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
