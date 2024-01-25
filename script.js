@@ -5,6 +5,10 @@ function openSection(event, sectionName) {
     for (i = 0; i < sections.children.length; i++) {
         sections.children[i].style.display = "none";
     }
+    tablinks = document.getElementsByClassName("tablink");
+	for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
     document.getElementById(sectionName).style.display = "block";
     event.currentTarget.className += " active";
 }
