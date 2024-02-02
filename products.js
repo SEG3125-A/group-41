@@ -1,86 +1,14 @@
-var products = [
-    {
-        name:"xbox one",
-        value:"xbox",
-        price: 700,
-        videoGame: true,
-        electronic: true,
-        appliances: false,
-    },
-    {
-        name: "Half life 3",
-        value: "half-life",
-        price: 60,
-        videoGame: true,
-        electronic: true,
-        appliances: false,
-    },
-    {
-        name:"Portal 2",
-        value:"portal",
-        price: 40,
-        videoGame: true,
-        electronic: true,
-        appliances: false,
-    },
-    {
-        name:"Left 4 Dead",
-        value:"left4dead",
-        price: 60,
-        videoGame: true,
-        electronic: true,
-        appliances: false,    
-    },
-    {
-        name:"Iphone 10",
-        value:"iphone",
-        price: 1000,
-        videoGame: false,
-        electronic: true,
-        appliances: false,
-    },
-    {
-        name:"Samsung Galaxy S8",
-        value:"samsung",
-        price: 800,
-        videoGame: false,
-        electronic: true,
-        appliances: false,
-    },
-    {
-        name:"LG G6",
-        value:"lg",
-        price: 600,
-        videoGame: false,
-        electronic: true,
-        appliances: false,
-    },
-    {
-        name:"microwave",
-        value:"microwave",
-        price: 200,
-        videoGame: false,
-        electronic: false,
-        appliances: true,
-    },
-    {
-        name:"oven",
-        value:"oven",
-        price: 500,
-        videoGame: false,
-        electronic: false,
-        appliances: true,
-    },
-    {
-        name:"fridge",
-        value:"fridge",
-        price: 800,
-        videoGame: false,
-        electronic: false,
-        appliances: true,
-    }
-];
+// Categories to the products pages: vegetables, fruits, dairy, meat, fish, bread
+// options: organic, glutenFree, lactoseFree
 
+var products = [
+    {name: "Carrot", value: "carrot", price: 0.5, fruits: true, vegetables: true, organic: true, glutenFree: true, lactoseFree: true},
+    {name: "Apple", value: "apple", price: 1, fruits: true, organic: true, glutenFree: true, lactoseFree: true},
+    {name: "Milk", value: "milk", price: 2, dairy: true, organic: true, glutenFree: true, lactoseFree: false},
+    {name: "Beef", value: "beef", price: 5, meat: true, organic: true, glutenFree: true, lactoseFree: true},
+    {name: "Salmon", value: "salmon", price: 7, fish: true, organic: true, glutenFree: true, lactoseFree: true},
+    {name: "Bread", value: "bread", price: 3, bread: true, organic: true, glutenFree: false, lactoseFree: true}
+];
 function getProducts(type){
     var filteredProducts = [];
     for(var i = 0; i < products.length; i++){

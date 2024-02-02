@@ -4,8 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Rawakore</title>
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    <link rel="stylesheet" href="style.css" />
   </head>
   <!-- Client page -->
   <body style="background: linear-gradient(90deg, #9ebd13 0%, #008552 100%)" ;>
@@ -20,7 +19,7 @@
         Rawakore
       </h1>
     </div>
-    <div class="tabs">
+    <!-- <div class="tabs">
       <button class="tablink" onclick="openSection(event, 'clientSect')">
         Client
       </button>
@@ -30,7 +29,38 @@
       <button class="tablink" onclick="openSection(event, 'cartSect')">
         Cart
       </button>
-    </div>
+    </div> -->
+
+    <nav aria-label="breadcrumb" class="tabs">
+      <ol class="breadcrumb" style="background-color: #9ebd13;">
+        <!-- Nav link that openSection openSection(event, 'nameSect') when clicked -->
+        <!-- make the text black -->
+        <li class="breadcrumb-item active tablink" aria-current="page">
+          <a
+            href="#"
+            style="color: black"
+            onclick="openSection(event, 'clientSect')"
+            >Client</a
+          >
+        </li>
+        <li class="breadcrumb-item tablink" aria-current="page">
+          <a
+            href="#"
+            style="color: black"
+            onclick="openSection(event, 'productsSect')"
+            >Product</a
+          >
+        </li>
+        <li class="breadcrumb-item tablink" aria-current="page">
+          <a
+            href="#"
+            style="color: black"
+            onclick="openSection(event, 'cartSect')"
+            >Cart</a
+          >
+        </li>
+      </ol>
+    </nav>
 
     <div id="sections" class="sections">
       <div id="clientSect" class="container">
@@ -41,16 +71,46 @@
           </div>
           <div>
             <p>Choose a section you're interested in</p>
-            <select
+            <!-- <select
               name="category"
               id="category"
               onchange="populateProducts(this.id, 'listProducts')"
             >
               <option></option>
-              <option value="videoGame">Video Game</option>
-              <option value="electronic">Electronics</option>
-              <option value="appliances">Appliances</option>
-            </select>
+              <option value="fruits">Fruits</option>
+              <option value="vegetables">Vegetables</option>
+              <option value="meat">Meat</option>
+              <option value="dairy">Dairy</option>
+              <option value="bakery">Bakery</option>
+            </select> -->
+            <!-- Change to checkbox -->
+            <ul class="list-group">
+              <li class="list-group-item">
+                <input type="checkbox" id="fruits" name="fruits" value="fruits" />
+                <label for="fruits">Fruits</label>
+              </li>
+              <li class="list-group-item">
+                <input
+                  type="checkbox"
+                  id="vegetables"
+                  name="vegetables"
+                  value="vegetables"
+                />
+                <label for="vegetables">Vegetables</label>
+              </li>
+              <li class="list-group-item">
+                <input type="checkbox" id="meat" name="meat" value="meat" />
+                <label for="meat">Meat</label>
+              </li>
+              <li class="list-group-item">
+                <input type="checkbox" id="dairy" name="dairy" value="dairy" />
+                <label for="dairy">Dairy</label>
+              </li>
+              <li class="list-group-item">
+                <input type="checkbox" id="bakery" name="bakery" value="bakery" />
+                <label for="bakery">Bakery</label>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
