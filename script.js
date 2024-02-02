@@ -72,6 +72,8 @@ function compareProducts(a, b) {
 }
 function addToCart() {
   var cart = document.getElementById("cart");
+  var cartnoti = document.getElementById("cart-noti");
+
   var products = document.getElementsByClassName("product");
   var cartsElements = [];
 
@@ -98,4 +100,6 @@ function addToCart() {
       document.createTextNode("Total: " + getTotal(cartsElements) + "$")
     );
   }
+  cartnoti.textContent = "Items Added to Cart";
+  cartnoti.style.color = "#ffc24f";
 }
