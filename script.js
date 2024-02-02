@@ -10,37 +10,56 @@ function openSection(event, sectionName) {
 		tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById(sectionName).style.display = "block";
-    event.currentTarget.className += " active";
+    event.currentTarget.parentElement.className += " active";
 }
 
-function populateProducts(categoryId, productsSectId){
-    var productCategory = document.getElementById(categoryId);
-    var productsList = document.getElementById(productsSectId);
+function populateProducts(){
+    var productCategory = document.getElementById("category");
+    // Get the element selected from radio buttons
+    var checked = productCategory.querySelectorAll('input[type=radio]:checked');
+    checked = checked[0];
+    var productsList = document.getElementById("listProducts");
 
     // Remove all products
     while (productsList.firstChild) {
         productsList.removeChild(productsList.firstChild);
     }
 
-    // Add products
-    var productsToAdd = getProducts(productCategory.value);
-
-    for (i = 0; i < productsToAdd.length; i++) {
-        var checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.name = "item";
-        checkbox.value = productsToAdd[i].value;
-        checkbox.id = productsToAdd[i].value;
-        checkbox.className = "product";
-        productsList.appendChild(checkbox);
-
-        var label = document.createElement('label')
-        label.htmlFor = productsToAdd[i].name;
-        label.appendChild(document.createTextNode(productsToAdd[i].name));
-        productsList.appendChild(label);
+    if (checked.length == 0) {
+        return;
     }
+
+    // Add products
+    var ul = document.createElement("ul");
+    var productsToAdd = [];
+    productsToAdd.push.apply(productsToAdd, getProducts(checked.value));
+
+
+    // Filter products by price
+    productsToAdd.sort(compareProducts);
+    // remove duplicates
+    productsToAdd = productsToAdd
+    .filter((product, index, self) => self.findIndex(p => p.name === product.name) === index);
+
+    for (j = 0; j < productsToAdd.length; j++) {
+        var li = document.createElement("li");
+        var product = productsToAdd[j];
+        var input = document.createElement("input");
+        input.type = "checkbox";
+        input.className = "product";
+        input.value = product.value;
+        input.name = product.name;
+        li.appendChild(input);
+        li.appendChild(document.createTextNode(product.name + " - " + product.price + "$"));
+        ul.appendChild(li);
+    }
+    
+    productsList.appendChild(ul);
 }
 
+function compareProducts(a, b){
+    return a.price - b.price;
+}
 function addToCart() {
     var cart = document.getElementById("cart");
     var products = document.getElementsByClassName("product");

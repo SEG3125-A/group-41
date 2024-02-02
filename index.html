@@ -35,10 +35,9 @@
       <ol class="breadcrumb" style="background-color: #9ebd13;">
         <!-- Nav link that openSection openSection(event, 'nameSect') when clicked -->
         <!-- make the text black -->
-        <li class="breadcrumb-item active tablink" aria-current="page">
+        <li class="breadcrumb-item tablink" aria-current="page">
           <a
             href="#"
-            style="color: black"
             onclick="openSection(event, 'clientSect')"
             >Client</a
           >
@@ -46,7 +45,6 @@
         <li class="breadcrumb-item tablink" aria-current="page">
           <a
             href="#"
-            style="color: black"
             onclick="openSection(event, 'productsSect')"
             >Product</a
           >
@@ -54,7 +52,6 @@
         <li class="breadcrumb-item tablink" aria-current="page">
           <a
             href="#"
-            style="color: black"
             onclick="openSection(event, 'cartSect')"
             >Cart</a
           >
@@ -85,31 +82,34 @@
             </select> -->
             <!-- Change to checkbox -->
             <ul class="list-group">
-              <li class="list-group-item">
-                <input type="checkbox" id="fruits" name="fruits" value="fruits" />
-                <label for="fruits">Fruits</label>
-              </li>
-              <li class="list-group-item">
-                <input
-                  type="checkbox"
-                  id="vegetables"
-                  name="vegetables"
-                  value="vegetables"
-                />
-                <label for="vegetables">Vegetables</label>
-              </li>
-              <li class="list-group-item">
-                <input type="checkbox" id="meat" name="meat" value="meat" />
-                <label for="meat">Meat</label>
-              </li>
-              <li class="list-group-item">
-                <input type="checkbox" id="dairy" name="dairy" value="dairy" />
-                <label for="dairy">Dairy</label>
-              </li>
-              <li class="list-group-item">
-                <input type="checkbox" id="bakery" name="bakery" value="bakery" />
-                <label for="bakery">Bakery</label>
-              </li>
+              <form id="category" >
+                <li class="list-group-item">
+                  <input type="radio" id="fruits" name="category" value="fruits" 
+                  onchange="populateProducts()"/>
+                  <label for="fruits">Fruits</label>
+                </li>
+                <li class="list-group-item">
+                  <input
+                    type="radio" id="vegetables" name="category" value="vegetables"
+                    onchange="populateProducts()" />
+                  <label for="vegetables">Vegetables</label>
+                </li>
+                <li class="list-group-item">
+                  <input type="radio" id="meat" name="category" value="meat" 
+                  onchange="populateProducts()"/>
+                  <label for="meat">Meat</label>
+                </li>
+                <li class="list-group-item">
+                  <input type="radio" id="dairy" name="category" value="dairy"
+                  onchange="populateProducts()" />
+                  <label for="dairy">Dairy</label>
+                </li>
+                <li class="list-group-item">
+                  <input type="radio" id="organic" name="category" value="organic"
+                  onchange="populateProducts()" />
+                  <label for="organic">Organic</label>
+                </li>
+              </form>
             </ul>
           </div>
         </div>
