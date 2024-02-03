@@ -54,14 +54,14 @@ li {
 }
 
 .breadcrumb {
-  padding: 10px;
+  padding-left: 10px;
 }
 
 .breadcrumb-item {
   background-color: white;
-  margin: 10px;
+
   padding: 10px;
-  border-radius: 10px;
+  /* border-radius: 10%; */
 }
 footer {
   color: rgb(0, 0, 0);
