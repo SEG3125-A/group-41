@@ -10,7 +10,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/carrot.jpg",
+    img: "./images/carrot.jpg",
   },
   {
     name: "Apple",
@@ -21,7 +21,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/apple.jpg",
+    img: "./images/apple.jpg",
   },
   {
     name: "Milk",
@@ -32,7 +32,7 @@ var products = [
     glutenFree: true,
     lactoseFree: false,
     vegetarian: true,
-    img: "/images/milk.jpg",
+    img: "./images/milk.jpg",
   },
   {
     name: "Beef",
@@ -43,7 +43,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/beef.jpg",
+    img: "./images/beef.jpg",
   },
   {
     name: "Salmon",
@@ -54,7 +54,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/salmon.jpg",
+    img: "./images/salmon.jpg",
   },
   {
     name: "Bread",
@@ -65,7 +65,7 @@ var products = [
     glutenFree: false,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/bread.jpg",
+    img: "./images/bread.jpg",
   },
   {
     name: "Banana",
@@ -76,7 +76,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/banana.jpg",
+    img: "./images/banana.jpg",
   },
   {
     name: "Yogurt",
@@ -87,7 +87,7 @@ var products = [
     glutenFree: true,
     lactoseFree: false,
     vegetarian: true,
-    img: "/images/yogurt.jpg",
+    img: "./images/yogurt.jpg",
   },
   {
     name: "Chicken",
@@ -98,7 +98,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/chicken.jpg",
+    img: "./images/chicken.jpg",
   },
   {
     name: "Tuna",
@@ -109,7 +109,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/tuna.jpg",
+    img: "./images/tuna.jpg",
   },
   {
     name: "Rye bread",
@@ -120,7 +120,7 @@ var products = [
     glutenFree: false,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/ryeBread.jpg",
+    img: "./images/ryeBread.jpg",
   },
   {
     name: "Orange",
@@ -131,7 +131,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/orange.jpg",
+    img: "./images/orange.jpg",
   },
   {
     name: "Cheese",
@@ -142,7 +142,7 @@ var products = [
     glutenFree: true,
     lactoseFree: false,
     vegetarian: true,
-    img: "/images/cheese.jpg",
+    img: "./images/cheese.jpg",
   },
   {
     name: "Pork",
@@ -153,7 +153,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/pork.jpg",
+    img: "./images/pork.jpg",
   },
   {
     name: "Sardine",
@@ -174,7 +174,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/lettuce.jpg",
+    img: "./images/lettuce.jpg",
   },
   {
     name: "Broccoli",
@@ -186,7 +186,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/broccoli.jpg",
+    img: "./images/broccoli.jpg",
   },
   {
     name: "Eggs",
@@ -198,7 +198,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/egg.jpg",
+    img: "./images/egg.jpg",
   },
   {
     name: "Lamb",
@@ -210,7 +210,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/lamb.jpg",
+    img: "./images/lamb.jpg",
   },
   {
     name: "Cod",
@@ -222,7 +222,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/cod.jpg",
+    img: "./images/cod.jpg",
   },
   {
     name: "Baguette",
@@ -234,7 +234,7 @@ var products = [
     glutenFree: false,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/baguette.jpg",
+    img: "./images/baguette.jpg",
   },
   {
     name: "Grapes",
@@ -246,7 +246,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/grapes.jpg",
+    img: "./images/grapes.jpg",
   },
   {
     name: "Butter",
@@ -259,7 +259,7 @@ var products = [
     glutenFree: true,
     lactoseFree: false,
     vegetarian: true,
-    img: "/images/butter.jpg",
+    img: "./images/butter.jpg",
   },
   {
     name: "Turkey",
@@ -271,7 +271,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/turkey.jpg",
+    img: "./images/turkey.jpg",
   },
   {
     name: "Herring",
@@ -283,10 +283,10 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: false,
-    img: "/images/herring.jpg",
+    img: "./images/herring.jpg",
   },
 ];
-function getProducts(type=null, restrictions = "none") {
+function getProducts(type = null, restrictions = "none") {
   var filteredProducts = [];
   for (var i = 0; i < products.length; i++) {
     if (type == null) {
