@@ -71,3 +71,19 @@ footer {
   background-color: white;
   justify-content: center;
 }
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 15px;
+  background-color: #45c51b;
+  outline: 3px #05830f solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+}

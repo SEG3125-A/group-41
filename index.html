@@ -164,7 +164,9 @@
               </form>
             </ul>
 
-            <h1 style="margin-top: 5%">Please Add Any Additional Dietary Restrictions:</h1>
+            <h1 style="margin-top: 5%">
+              Please Add Any Additional Dietary Restrictions:
+            </h1>
             <ul class="list-group">
               <form id="restriction">
                 <li class="list-group-item">
@@ -203,6 +205,13 @@
             </ul>
           </div>
         </div>
+        <button
+          id="next-product"
+          style="padding: 1%; font-size: 20px; margin: 1%"
+          onclick="openSection(event, 'productsSect')"
+        >
+          Next
+        </button>
       </div>
       <div id="productsSect" class="container">
         <h1 id="cart-noti"></h1>
@@ -221,7 +230,7 @@
             id="add"
             type="button"
             class="block"
-            onclick="addToCart()"
+            onclick="addToCart();openSection(event, 'cartSect')"
           >
             Add to cart
           </button>
