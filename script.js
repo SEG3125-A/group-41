@@ -54,6 +54,8 @@ function populateProducts() {
     input.type = "checkbox";
     input.className = "product";
     input.value = product.value;
+    input.style.height = "20px";
+    input.style.width = "20px";
     input.name = product.name;
     li.appendChild(img);
     li.appendChild(input);
@@ -83,6 +85,7 @@ function addToCart() {
 
   var text = document.createElement("p");
   text.innerHTML = "Cart:";
+  text.style.fontSize = "20px";
   text.appendChild(document.createElement("br"));
   for (i = 0; i < products.length; i++) {
     if (products[i].checked) {
@@ -91,14 +94,18 @@ function addToCart() {
       text.appendChild(document.createElement("br"));
     }
   }
+
   if (cartsElements.length == 0) {
     text.appendChild(document.createTextNode("Cart is empty"));
+
     cart.appendChild(text);
+    cart.style.fontSize = "20px";
   } else {
     cart.appendChild(text);
     cart.appendChild(
       document.createTextNode("Total: " + getTotal(cartsElements) + "$")
     );
+    cart.style.fontSize = "20px";
   }
   cartnoti.textContent = "Items Added to Cart";
   cartnoti.style.color = "#ffc24f";

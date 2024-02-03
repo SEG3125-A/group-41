@@ -48,5 +48,20 @@
 }
 
 .active a {
-  color: white;
+  color: rgb(0, 0, 0);
+}
+
+li {
+  font-size: 20px;
+}
+
+.breadcrumb {
+  padding: 10px;
+}
+
+.breadcrumb-item {
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
 }
