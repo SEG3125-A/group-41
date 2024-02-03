@@ -32,7 +32,7 @@ var products = [
     organic: false,
     glutenFree: true,
     lactoseFree: false,
-    img: "/images/carrot.jpg",
+    img: "/images/milk.jpg",
   },
   {
     name: "Beef",
