@@ -97,3 +97,12 @@ button {
   cursor: pointer;
   transition: 400ms;
 }
+
+footer {
+  color: rgb(0, 0, 0);
+
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  justify-content: center;
+}
