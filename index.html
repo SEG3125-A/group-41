@@ -159,11 +159,17 @@
                     alt="organic-food"
                   />
                 </li>
+              </form>
+            </ul>
+
+            <h1 style="margin-top: 5%">Dierty Restriction</h1>
+            <ul class="list-group">
+              <form id="restriction">
                 <li class="list-group-item">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id="vegetarian"
-                    name="category"
+                    name="restriction"
                     value="vegetarian"
                     onchange="populateProducts()"
                   />
@@ -177,9 +183,9 @@
                 </li>
                 <li class="list-group-item">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id="glutenFree"
-                    name="category"
+                    name="restriction"
                     value="glutenFree"
                     onchange="populateProducts()"
                   />
@@ -193,9 +199,9 @@
                 </li>
                 <li class="list-group-item">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id="none"
-                    name="category"
+                    name="restriction"
                     value="none"
                     onchange="populateProducts()"
                   />
