@@ -1,6 +1,5 @@
 function openSection(event, sectionName) {
   var i, sections, tablinks;
-  // Go over every child of the element with id="sections" and hide it
   sections = document.getElementById("sections");
   for (i = 0; i < sections.children.length; i++) {
     sections.children[i].style.display = "none";
@@ -16,6 +15,7 @@ function openSection(event, sectionName) {
 function populateProducts() {
   var productCategory = document.getElementById("category");
   var productRestriction = document.getElementById("restriction");
+  
   // Get the element selected from radio or checkbox
   var checkedCategory = productCategory.querySelectorAll("input:checked");
   var checkedRestriction = productRestriction.querySelectorAll("input:checked");

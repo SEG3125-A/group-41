@@ -1,6 +1,3 @@
-// Categories to the products pages: vegetables, fruits, dairy, meat, fish, bread
-// options: organic, glutenFree, lactoseFree
-
 // prettier-ignore
 var products = [
   {
