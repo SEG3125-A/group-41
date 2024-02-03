@@ -110,7 +110,9 @@ function addToCart() {
       img.width = 200;
       li.appendChild(img);
       li.appendChild(
-        document.createTextNode(products[i].name + " - " + products[i].price + "$")
+        document.createTextNode(
+          products[i].name + " - " + products[i].price + "$"
+        )
       );
       ul.appendChild(li);
       ul.appendChild(document.createElement("br"));
