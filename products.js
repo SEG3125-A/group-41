@@ -201,7 +201,7 @@ var products = [
     glutenFree: true,
     lactoseFree: true,
     vegetarian: true,
-    img: "/images/eggs.jpg",
+    img: "/images/egg.jpg",
   },
   {
     name: "Lamb",
