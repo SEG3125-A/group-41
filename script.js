@@ -57,6 +57,8 @@ function populateProducts() {
     input.style.height = "20px";
     input.style.width = "20px";
     input.name = product.name;
+    input.price = product.price;
+    input.img = product.img;
     li.appendChild(img);
     li.appendChild(input);
 
@@ -72,6 +74,7 @@ function populateProducts() {
 function compareProducts(a, b) {
   return a.price - b.price;
 }
+
 function addToCart() {
   var cart = document.getElementById("cart");
   var cartnoti = document.getElementById("cart-noti");
@@ -82,16 +85,34 @@ function addToCart() {
   while (cart.firstChild) {
     cart.removeChild(cart.firstChild);
   }
+  var ul = document.createElement("ul");
 
   var text = document.createElement("p");
   text.innerHTML = "Cart:";
   text.style.fontSize = "20px";
   text.appendChild(document.createElement("br"));
+  // for (i = 0; i < products.length; i++) {
+  //   if (products[i].checked) {
+  //     cartsElements.push(products[i].value);
+  //     text.appendChild(document.createTextNode(products[i].name + " - " + products[i].price + "$"));
+  //     // text.appendChild(document.createTextNode(" - " + products[i].name));
+  //     text.appendChild(document.createElement("br"));
+  //   }
+  // }
+
   for (i = 0; i < products.length; i++) {
     if (products[i].checked) {
       cartsElements.push(products[i].value);
-      text.appendChild(document.createTextNode(products[i].value));
-      text.appendChild(document.createElement("br"));
+      var li = document.createElement("li");
+      var img = document.createElement("img");
+      img.src = products[i].img;
+      img.height = 200;
+      img.width = 200;
+      li.appendChild(img);
+      li.appendChild(
+        document.createTextNode(products[i].name + " - " + products[i].price + "$")
+      );
+      ul.appendChild(li);
     }
   }
 
@@ -101,7 +122,7 @@ function addToCart() {
     cart.appendChild(text);
     cart.style.fontSize = "20px";
   } else {
-    cart.appendChild(text);
+    cart.appendChild(ul);
     cart.appendChild(
       document.createTextNode("Total: " + getTotal(cartsElements) + "$")
     );
