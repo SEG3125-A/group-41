@@ -152,7 +152,8 @@ var products = [
     organic: false,
     glutenFree: true,
     lactoseFree: true
-  }];
+  },
+];
 function getProducts(type) {
   var filteredProducts = [];
   for (var i = 0; i < products.length; i++) {
