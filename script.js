@@ -32,7 +32,7 @@ function populateProducts() {
   // Add products
   var ul = document.createElement("ul");
   var productsToAdd = [];
-  for (i = 0; i < checked.length; i++){
+  for (i = 0; i < checked.length; i++) {
     productsToAdd.push.apply(productsToAdd, getProducts(checked[i].value));
   }
 
@@ -114,7 +114,9 @@ function addToCart() {
   }
 
   if (cartsElements.length == 0) {
-    text.appendChild(document.createTextNode("Cart is empty"));
+    empty_Text = document.createTextNode("Cart is empty");
+    empty_Text.style.fontSize = "20px";
+    text.appendChild(empty_Text);
 
     cart.appendChild(text);
     cart.style.fontSize = "20px";
