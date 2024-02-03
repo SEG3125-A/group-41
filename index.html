@@ -52,88 +52,41 @@
             <h2>Products</h2>
           </div>
           <div>
-            <p style="font-size: 20px">Choose a section you're interested in</p>
+            <p style="font-size: 20px">Please mention any dietary preferences here:</p>
             <ul class="list-group">
               <form id="category">
                 <li class="list-group-item">
                   <input
                     type="radio"
-                    id="fruits"
+                    id="vegetarian"
                     name="category"
-                    value="fruits"
+                    value="vegetarian"
                     onchange="populateProducts()"
                   />
-                  <label for="fruits">Fruits</label>
-                  <img
-                    width="48"
-                    height="48"
-                    src="https://img.icons8.com/fluency/48/peach.png"
-                    alt="peach"
-                  />
+                  <label for="vegetarian">Vegetarian</label>
+                  <img width="50" height="50" src="https://img.icons8.com/ios/50/vegetarian-mark.png" alt="vegetarian-mark"/>
                 </li>
                 <li class="list-group-item">
                   <input
                     type="radio"
-                    id="vegetables"
+                    id="glutenFree"
                     name="category"
-                    value="vegetables"
+                    value="glutenFree"
                     onchange="populateProducts()"
                   />
-                  <label for="vegetables">Vegetables</label>
-                  <img
-                    width="48"
-                    height="48"
-                    src="https://img.icons8.com/color/48/gailan.png"
-                    alt="gailan"
-                  />
+                  <label for="glutenFree">Gluten Free</label>
+                  <img width="50" height="50" src="https://img.icons8.com/ios/50/no-gluten.png" alt="no-gluten"/>
                 </li>
                 <li class="list-group-item">
                   <input
                     type="radio"
-                    id="meat"
+                    id="none"
                     name="category"
-                    value="meat"
+                    value="none"
                     onchange="populateProducts()"
                   />
-                  <label for="meat">Meat</label>
-                  <img
-                    width="64"
-                    height="64"
-                    src="https://img.icons8.com/cotton/64/steak-rare--v1.png"
-                    alt="steak-rare--v1"
-                  />
-                </li>
-                <li class="list-group-item">
-                  <input
-                    type="radio"
-                    id="dairy"
-                    name="category"
-                    value="dairy"
-                    onchange="populateProducts()"
-                  />
-                  <label for="dairy">Dairy</label>
-                  <img
-                    width="100"
-                    height="100"
-                    src="https://img.icons8.com/clouds/100/milk-bottle--v1.png"
-                    alt="milk-bottle--v1"
-                  />
-                </li>
-                <li class="list-group-item">
-                  <input
-                    type="radio"
-                    id="organic"
-                    name="category"
-                    value="organic"
-                    onchange="populateProducts()"
-                  />
-                  <label for="organic">Organic</label>
-                  <img
-                    width="100"
-                    height="100"
-                    src="https://img.icons8.com/plasticine/100/organic-food.png"
-                    alt="organic-food"
-                  />
+                  <label for="none">None</label>
+                  <img width="26" height="26" src="https://img.icons8.com/metro/26/cancel-2.png" alt="cancel-2"/>
                 </li>
               </form>
             </ul>
