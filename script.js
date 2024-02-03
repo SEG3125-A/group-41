@@ -15,8 +15,10 @@ function openSection(event, sectionName) {
 
 function populateProducts() {
   var productCategory = document.getElementById("category");
-  // Get the element selected from radio buttons
-  var checked = productCategory.querySelectorAll("input[type=radio]:checked");
+  var productRestriction = document.getElementById("restriction");
+  // Get the element selected from radio or checkbox
+  var checkedCategory = productCategory.querySelectorAll("input:checked");
+  var checkedRestriction = productRestriction.querySelectorAll("input:checked");
 
   var productsList = document.getElementById("listProducts");
 
@@ -25,15 +27,26 @@ function populateProducts() {
     productsList.removeChild(productsList.firstChild);
   }
 
-  if (checked.length == 0) {
+  if (checkedCategory.length == 0 && checkedRestriction.length == 0) {
     return;
   }
 
   // Add products
   var ul = document.createElement("ul");
   var productsToAdd = [];
-  for (i = 0; i < checked.length; i++) {
-    productsToAdd.push.apply(productsToAdd, getProducts(checked[i].value));
+  for (i = 0; i < checkedCategory.length; i++) {
+    productsToAdd.push.apply(
+      productsToAdd,
+      getProducts(checkedCategory[i].value, checkedRestriction)
+    );
+  }
+  if (checkedCategory.length == 0) {
+    for (i = 0; i < productCategory.length; i++) {
+      productsToAdd.push.apply(
+        productsToAdd,
+        getProducts(null, checkedRestriction)
+      );
+    }
   }
 
   // Filter products by price

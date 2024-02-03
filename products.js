@@ -289,14 +289,35 @@ var products = [
     img: "/images/herring.jpg",
   },
 ];
-function getProducts(type) {
+function getProducts(type=null, restrictions = "none") {
   var filteredProducts = [];
   for (var i = 0; i < products.length; i++) {
-    if (products[i][type] == true || type == "none") {
-      filteredProducts.push(products[i]);
+    if (type == null) {
+      getCriteria();
+    } else {
+      if (products[i][type] == true) {
+        if (restrictions.length == 0) {
+          filteredProducts.push(products[i]);
+        } else {
+          getCriteria();
+        }
+      }
     }
   }
   return filteredProducts;
+
+  function getCriteria() {
+    var addProduct = true;
+    for (var j = 0; j < restrictions.length; j++) {
+      if (products[i][restrictions[j].value] == false) {
+        addProduct = false;
+      }
+    }
+    if (addProduct) {
+      filteredProducts.push(products[i]);
+    }
+    return { addProduct, j };
+  }
 }
 
 function getTotal(elems) {
