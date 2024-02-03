@@ -113,6 +113,7 @@ function addToCart() {
         document.createTextNode(products[i].name + " - " + products[i].price + "$")
       );
       ul.appendChild(li);
+      ul.appendChild(document.createElement("br"));
     }
   }
 
