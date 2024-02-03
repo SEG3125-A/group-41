@@ -35,7 +35,7 @@ var products = [
     glutenFree: true,
     lactoseFree: false,
     vegetarian: true,
-    img: "/images/carrot.jpg",
+    img: "/images/milk.jpg",
   },
   {
     name: "Beef",
