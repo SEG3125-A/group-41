@@ -49,6 +49,16 @@
   color: rgb(0, 0, 0);
 }
 
+a {
+  color: #027908; /* Inactive color (e.g., blue) */
+  text-decoration: none; /* Optional: Removes underline */
+}
+
+a:hover {
+  color: #000000; /* Slightly darker blue on hover */
+  text-decoration: underline; /* Optional: Adds underline on hover */
+}
+
 li {
   font-size: 20px;
 }
