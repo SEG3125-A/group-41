@@ -7,52 +7,50 @@ var services = [
     },
     {
         "id": 2,
-        "name": "Seat replacement",
-        "value": "seatReplacement",
+        "name": "Performance Upgrades",
+        "value": "performanceUpgrades",
         "price": 200,
     },
     {
         "id": 3,
-        "name": "Bike wash",
-        "value": "bikeWash",
+        "name": "Wheel Truing and Alignment",
+        "value": "turingAndAlignment",
         "price": 50,
     },
     {
         "id": 4,
-        "name": "Tire change",
-        "value": "tireChange",
+        "name": "Seat replacement",
+        "value": "seatReplacement",
         "price": 150,
     },
     {
         "id": 5,
-        "name": "Chain replacement",
-        "value": "chainReplacement",
+        "name": "Gear adjustment",
+        "value": "gearAdjustment",
         "price": 100,
     },
     {
         "id": 6,
-        "name": "Tire change",
-        "value": "tireChange",
+        "name": "Tire and tube change",
+        "value": "tireTubeChange",
         "price": 150,
-    },
-    {
-        "id": 7,
-        "name": "Oil change",
-        "value": "oilChange",
-        "price": 100,
     }
 ]
 
 var bookings = []
 
-function bookService(value, time) {
+function bookService(value, time, clientInfo) {
     var service = services.find(s => s.value === value);
 
     var found = bookings.find(b => b.time === time);
 
-    if (!found) {
+    if (!found && service) {
         bookings.push({
             time: time,
+            fname: clientInfo.name,
+            lname: clientInfo.lname,
+            email: clientInfo.email,
+            phoneNumber: clientInfo.phoneNumber,
             services: [service]
         });
         return true;
