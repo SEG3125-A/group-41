@@ -7,242 +7,122 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
     />
-
-    <style>
-      body,
-      html {
-        height: 100%;
-      }
-      .bg-image {
-        background-image: url("./images/bgimage.jpg"); /* Placeholder for background image */
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div
+      class="bg-image vh-100 d-flex flex-column justify-content-center align-items-center text-white text-center"
+      style="
+        background-image: url('./images/bgimage.jpg');
         background-size: cover;
         background-position: center;
-        height: 100%;
-      }
-      .overlay {
-        background-color: rgba(
-          0,
-          0,
-          0,
-          0.5
-        ); /* Dark overlay for text readability */
-        color: white;
-        height: 100%;
-      }
-      .content {
-        padding-top: 100px;
-      }
-      .btn-custom {
-        background-color: #4caf50;
-        color: white;
-        font-size: 20px;
-        padding: 10px 20px;
-      }
-      .navbar-custom {
-        background-color: transparent;
-        border: none;
-      }
-      .navbar-custom .navbar-nav .nav-link {
-        color: white;
-      }
-      .about-section {
-        padding: 50px;
-        background-color: #f5f5f5; /* Light gray background */
-      }
-      .testimonial {
-        background-color: #ffffff; /* White background */
-        border: 1px solid #ddd; /* Light gray border */
-        padding: 30px;
-        margin-top: 30px;
-      }
-      .contact-section {
-        padding: 50px;
-        background-color: #f5f5f5; /* Light gray background */
-      }
-      .contact-form {
-        background-color: #ffffff; /* White background */
-        padding: 30px;
-        border-radius: 5px; /* Slightly rounded corners for the form */
-      }
-      .contact-button {
-        background-color: #4caf50; /* Green background */
-        color: white; /* White text */
-        border: none; /* No border */
-        padding: 10px 20px; /* Padding around the text */
-        border-radius: 5px; /* Slightly rounded corners for the button */
-      }
-      /* Customizing the button to not change appearance on hover and focus */
-      .contact-button:hover,
-      .contact-button:focus {
-        background-color: #4caf50;
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="bg-image">
-      <div class="overlay">
-        <nav class="navbar navbar-expand-lg navbar-custom">
+      "
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img
               src="./images/icon.png"
               alt="Logo"
-              style="width: 64px; margin: 10px"
+              style="width: 30px"
+              class="d-inline-block align-text-top"
             />
-            <!-- Placeholder for logo -->
+            Pedal Pro Repair
           </a>
           <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact us</a>
-              </li>
-            </ul>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="#">Contact Us</a>
+            </div>
           </div>
-        </nav>
+        </div>
+      </nav>
 
-        <div class="content text-center">
-          <h1>Pedal Pro Repair</h1>
-          <p class="fs-4">Best Bike repair Shop in Ottawa</p>
-          <button class="btn btn-custom">Book a Service</button>
-        </div>
-      </div>
+      <h1>Pedal Pro Repair</h1>
+      <p class="fs-4">Best Bike repair Shop in Ottawa</p>
+      <button class="btn btn-success btn-lg">Book a Service</button>
     </div>
-    <div class="services">
-      <h2>Services</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="placeholder-service-image.jpg"
-                alt="Service Image"
-                class="card-img-top"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Brake pad</h5>
-                <p class="card-text">
-                  If you need a brake pad replacement, we have a wide selection
-                  of brake pads to choose from...
-                </p>
-                <button class="btn btn-custom" onclick='bookService("brakePad")'>Book now</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="placeholder-service-image.jpg"
-                alt="Service Image"
-                class="card-img-top"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Seat replacement</h5>
-                <p class="card-text">
-                  We have a wide selection of seats to choose from, and our team
-                  of skilled mechanics can help you find the perfect fit...
-                </p>
-                <button class="btn btn-custom" onclick='bookService("seatReplacement")'>Book now</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="placeholder-service-image.jpg"
-                alt="Service Image"
-                class="card-img-top"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Bike Wash</h5>
-                <p class="card-text">
-                  Our team of skilled mechanics will give your bike a thorough
-                  wash, leaving it looking as good as new...
-                </p>
-                <button class="btn btn-custom" onclick='bookService("bikeWash")'>Book now</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="placeholder-service-image.jpg"
-                alt="Service Image"
-                class="card-img-top"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Tire changes</h5>
-                <p class="card-text">
-                  If you need a tire change, we have a wide selection of tires
-                  to choose from...
-                </p>
-                <button class="btn btn-custom" onclick='bookService("tireChange")'>Book now</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="placeholder-service-image.jpg"
-                alt="Service Image"
-                class="card-img-top"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Chain replacement</h5>
-                <p class="card-text">
-                  If you need a chain replacement, we have a wide selection of
-                  chains to choose from...
-                </p>
-                <button class="btn btn-custom" onclick='bookService("chainReplacement")'>Book now</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="placeholder-service-image.jpg"
-                alt="Service Image"
-                class="card-img-top"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Bike Tune-up</h5>
-                <p class="card-text">
-                  Our team of skilled mechanics will give your bike a thorough
-                  tune-up, leaving it running as good as new...
-                </p>
-                <button class="btn btn-custom" onclick='bookService("bikeTuneUp")'>Book now</button>
-              </div>
+    <div class="container my-5">
+      <h2 class="text-center mb-4">Our Services</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Service Card 1 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="placeholder-service-image.jpg"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Brake Pad Replacement</h5>
+              <p class="card-text">
+                If you need a brake pad replacement, we have a wide selection of
+                brake pads to choose from...
+              </p>
+              <a href="#" class="btn btn-primary">Book Now</a>
             </div>
           </div>
         </div>
+        <!-- Service Card 2 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="placeholder-service-image.jpg"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Seat Replacement</h5>
+              <p class="card-text">
+                We have a wide selection of seats to choose from, and our team
+                of skilled mechanics can help you find the perfect fit...
+              </p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <!-- Additional Service Cards -->
+        <!-- Template for additional services -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="placeholder-service-image.jpg"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Service Name</h5>
+              <p class="card-text">Service description...</p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat for other services as needed -->
       </div>
     </div>
-    <div class="about-section">
+
+    <div class="about-section bg-light py-5">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0">
             <img
               src="placeholder-about-image.jpg"
               alt="About Us"
               class="img-fluid"
             />
-            <!-- Placeholder for the about image -->
           </div>
           <div class="col-md-6">
             <h2>About Us</h2>
@@ -252,43 +132,22 @@
               we are a team of passionate cyclists and skilled mechanics
               dedicated to providing the highest quality bike repair services...
             </p>
-            <!-- The text should continue with your actual content -->
-          </div>
-        </div>
-        <h3 class="mt-5">Testimonial</h3>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="testimonial">
-              <!-- Placeholder for testimonial content -->
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="testimonial">
-              <!-- Placeholder for testimonial content -->
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="testimonial">
-              <!-- Placeholder for testimonial content -->
-            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="contact-section">
+    <div class="contact-section bg-light py-5">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
             <img
               src="placeholder-contact-image.jpg"
               alt="Contact Image"
               class="img-fluid"
             />
-            <!-- Placeholder for the contact image -->
           </div>
           <div class="col-lg-6">
-            <div class="contact-form">
+            <div class="p-4 border rounded-3 bg-white">
               <h2>Contact us</h2>
               <form>
                 <div class="mb-3">
@@ -319,7 +178,7 @@
                     placeholder="Your Message"
                   ></textarea>
                 </div>
-                <button type="submit" class="contact-button">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
               </form>
             </div>
           </div>
