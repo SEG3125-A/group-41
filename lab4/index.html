@@ -141,7 +141,7 @@
                   If you need a brake pad replacement, we have a wide selection
                   of brake pads to choose from...
                 </p>
-                <button class="btn btn-custom" onclick='bookService("brakePad")'>Book now</button>
+                <button class="btn btn-custom" onclick='openForm("brakePad")'>Book now</button>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
                   We have a wide selection of seats to choose from, and our team
                   of skilled mechanics can help you find the perfect fit...
                 </p>
-                <button class="btn btn-custom" onclick='bookService("seatReplacement")'>Book now</button>
+                <button class="btn btn-custom" onclick='openForm("seatReplacement")'>Book now</button>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@
                   Our team of skilled mechanics will give your bike a thorough
                   wash, leaving it looking as good as new...
                 </p>
-                <button class="btn btn-custom" onclick='bookService("bikeWash")'>Book now</button>
+                <button class="btn btn-custom" onclick='openForm("bikeWash")'>Book now</button>
               </div>
             </div>
           </div>
@@ -192,7 +192,7 @@
                   If you need a tire change, we have a wide selection of tires
                   to choose from...
                 </p>
-                <button class="btn btn-custom" onclick='bookService("tireChange")'>Book now</button>
+                <button class="btn btn-custom" onclick='openForm("tireChange")'>Book now</button>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@
                   If you need a chain replacement, we have a wide selection of
                   chains to choose from...
                 </p>
-                <button class="btn btn-custom" onclick='bookService("chainReplacement")'>Book now</button>
+                <button class="btn btn-custom" onclick='openForm("chainReplacement")'>Book now</button>
               </div>
             </div>
           </div>
@@ -221,12 +221,12 @@
                 class="card-img-top"
               />
               <div class="card-body">
-                <h5 class="card-title">Bike Tune-up</h5>
+                <h5 class="card-title">Oil change</h5>
                 <p class="card-text">
-                  Our team of skilled mechanics will give your bike a thorough
-                  tune-up, leaving it running as good as new...
+                  If you need an oil change, we have a wide selection of oils to
+                  choose from...
                 </p>
-                <button class="btn btn-custom" onclick='bookService("bikeTuneUp")'>Book now</button>
+                <button class="btn btn-custom" onclick='openForm("bikeTuneUp")'>Book now</button>
               </div>
             </div>
           </div>
@@ -326,10 +326,55 @@
         </div>
       </div>
     </div>
+    
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="formService">
+          <label for="fname">First Name:</label><br>
+          <input type="text" id="fname" name="fname"><br>
+          <label for="lname">Last Name:</label><br>
+          <input type="text" id="lname" name="lname"><br>
+          <label for="email">Email:</label><br>
+          <input type="text" id="email" name="email"><br>
+          <label for="time">Time:</label><br>
+          <input type="time" id="time" name="time"><br>
+          <br>
+          <input type="submit" value="Submit">
+        </form> 
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
   </body>
+  <script>
+    function openForm(service) {
+      var modal = document.getElementsByClassName("modal")[0];
+      modal.style.display = "block";
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      var formService = document.getElementById("formService");
+      formService.onsubmit = function(e) {
+        e.preventDefault();
+        var fname = document.getElementById("fname").value;
+        var lname = document.getElementById("lname").value;
+        var email = document.getElementById("email").value;
+        var time = document.getElementById("time").value;
+        alert("Service booked for " + service + " by " + fname + " " + lname + " at " + time);
+        modal.style.display = "none";
+      }
+    }
+     
+  </script>
 </html>
