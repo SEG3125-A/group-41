@@ -8,6 +8,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <div
@@ -80,6 +81,53 @@
             </p>
           </div>
         </div>
+        <h3 class="text-center mt-5 mb-4">Testimonials</h3>
+        <div class="row">
+          <!-- Testimonial Card 1 -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                  "This is an amazing bike shop! They fixed my bike quickly and
+                  efficiently. I highly recommend them to anyone in need of bike
+                  repairs."
+                </p>
+                <footer class="blockquote-footer">
+                  Jane Doe, <cite title="Source Title">Cyclist</cite>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial Card 2 -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                  "Excellent customer service and high-quality work. My bike has
+                  never been in better condition. Thank you, Pedal Pro Repair!"
+                </p>
+                <footer class="blockquote-footer">
+                  John Smith, <cite title="Source Title">Bike Enthusiast</cite>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial Card 3 -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                  "Very knowledgeable and friendly staff. They went above and
+                  beyond to help me choose the right accessories for my bike."
+                </p>
+                <footer class="blockquote-footer">
+                  Emily Johnson,
+                  <cite title="Source Title">Professional Cyclist</cite>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container min-vh-100 my-5">
@@ -99,7 +147,7 @@
                 If you need a brake pad replacement, we have a wide selection of
                 brake pads to choose from...
               </p>
-              <a href="#" class="btn btn-primary">Book Now</a>
+              <a href="#" class="btn btn-custom">Book Now</a>
             </div>
           </div>
         </div>
@@ -117,7 +165,7 @@
                 We have a wide selection of seats to choose from, and our team
                 of skilled mechanics can help you find the perfect fit...
               </p>
-              <a href="#" class="btn btn-primary">Book Now</a>
+              <a href="#" class="btn btn-custom">Book Now</a>
             </div>
           </div>
         </div>
@@ -133,7 +181,7 @@
             <div class="card-body">
               <h5 class="card-title">Service Name</h5>
               <p class="card-text">Service description...</p>
-              <a href="#" class="btn btn-primary">Book Now</a>
+              <a href="#" class="btn btn-custom">Book Now</a>
             </div>
           </div>
         </div>
@@ -150,7 +198,7 @@
                 We have a wide selection of seats to choose from, and our team
                 of skilled mechanics can help you find the perfect fit...
               </p>
-              <a href="#" class="btn btn-primary">Book Now</a>
+              <a href="#" class="btn btn-custom">Book Now</a>
             </div>
           </div>
         </div>
@@ -167,7 +215,7 @@
                 We have a wide selection of seats to choose from, and our team
                 of skilled mechanics can help you find the perfect fit...
               </p>
-              <a href="#" class="btn btn-primary">Book Now</a>
+              <a href="#" class="btn btn-custom">Book Now</a>
             </div>
           </div>
         </div>
@@ -184,7 +232,7 @@
                 We have a wide selection of seats to choose from, and our team
                 of skilled mechanics can help you find the perfect fit...
               </p>
-              <a href="#" class="btn btn-primary">Book Now</a>
+              <a href="#" class="btn btn-custom">Book Now</a>
             </div>
           </div>
         </div>
@@ -241,22 +289,22 @@
         </div>
       </div>
     </div>
-    
+
     <div class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <form id="formService">
-          <label for="fname">First Name:</label><br>
-          <input type="text" id="fname" name="fname"><br>
-          <label for="lname">Last Name:</label><br>
-          <input type="text" id="lname" name="lname"><br>
-          <label for="email">Email:</label><br>
-          <input type="text" id="email" name="email"><br>
-          <label for="time">Time:</label><br>
-          <input type="time" id="time" name="time"><br>
-          <br>
-          <input type="submit" value="Submit">
-        </form> 
+          <label for="fname">First Name:</label><br />
+          <input type="text" id="fname" name="fname" /><br />
+          <label for="lname">Last Name:</label><br />
+          <input type="text" id="lname" name="lname" /><br />
+          <label for="email">Email:</label><br />
+          <input type="text" id="email" name="email" /><br />
+          <label for="time">Time:</label><br />
+          <input type="time" id="time" name="time" /><br />
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     </div>
 
@@ -271,25 +319,33 @@
       var modal = document.getElementsByClassName("modal")[0];
       modal.style.display = "block";
       var span = document.getElementsByClassName("close")[0];
-      span.onclick = function() {
+      span.onclick = function () {
         modal.style.display = "none";
-      }
-      window.onclick = function(event) {
+      };
+      window.onclick = function (event) {
         if (event.target == modal) {
           modal.style.display = "none";
         }
-      }
+      };
       var formService = document.getElementById("formService");
-      formService.onsubmit = function(e) {
+      formService.onsubmit = function (e) {
         e.preventDefault();
         var fname = document.getElementById("fname").value;
         var lname = document.getElementById("lname").value;
         var email = document.getElementById("email").value;
         var time = document.getElementById("time").value;
-        alert("Service booked for " + service + " by " + fname + " " + lname + " at " + time);
+        alert(
+          "Service booked for " +
+            service +
+            " by " +
+            fname +
+            " " +
+            lname +
+            " at " +
+            time
+        );
         modal.style.display = "none";
-      }
+      };
     }
-     
   </script>
 </html>
