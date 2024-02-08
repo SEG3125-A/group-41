@@ -141,12 +141,16 @@
               alt="Service Image"
             />
             <div class="card-body">
-              <h5 class="card-title">Brake Pad Replacement</h5>
+              <h4 class="card-title">Brake Pad Replacement</h4>
               <p class="card-text">
                 If you need a brake pad replacement, we have a wide selection of
-                brake pads to choose from...
+                brake pads to choose from. Mike is a friendly expert who can help
+                replace your brake pad so you're good to go back to riding.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('brakePad')">Book Now</a>
+              <a href="#" class="btn btn-custom" onclick="openForm('Brake Pad Replacement', 'Mike', '$39.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$39.99</b> with <b>Mike</b> as your technician
+              </h6>
             </div>
           </div>
         </div>
@@ -163,9 +167,14 @@
               <p class="card-text">
                 Installing upgraded components like carbon wheels, lighter
                 frames, or advanced gearing systems for those looking to enhance
-                their bike's performance.
+                their bike's performance. Akky and Mikeal are pros when it comes
+                to bikes and their performance and we are certain Addy and Mikeal
+                can get your bike up to your performance standards.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('performanceUpgrades')">Book Now</a>
+              <a href="#" class="btn btn-custom" onclick="openForm('Performance Upgrades', 'Addy or Mikeal', '$69.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$69.99</b> with <b>Addy</b> or <b>Mikeal</b> as your technician
+              </h6>
             </div>
           </div>
         </div>
@@ -181,9 +190,14 @@
               <h5 class="card-title">Wheel Truing and Alignment</h5>
               <p class="card-text">
                 Addressing issues with wheel balance, roundness, and alignment
-                to ensure a smooth ride and prevent premature wear. .
+                to ensure a smooth ride and prevent premature wear. Mikeal and Addy
+                are some of our top technicians and will ensure that your next ride
+                will be a balanced and smooth one.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('turingAndAlignment')">Book Now</a>
+              <a href="#" class="btn btn-custom" onclick="openForm('Wheel Truing and Alignment', 'Mikeal or Addy', '$19.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$19.99</b> with <b>Mikeal</b> or <b>Addy</b> as your technician
+              </h6>
             </div>
           </div>
         </div>
@@ -199,9 +213,14 @@
               <h5 class="card-title">Seat Replacement</h5>
               <p class="card-text">
                 We have a wide selection of seats to choose from, and our team
-                of skilled mechanics can help you find the perfect fit...
+                of skilled mechanics can help you find the perfect fit. Paul is our current
+                seat technician and has decades of experiences leaving customers satisfied
+                and comfortable with his seat choices.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('seatReplacement')">Book Now</a>
+              <a href="#" class="btn btn-custom" onclick="openForm('Seat Replacement', 'Paul', '$9.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$9.99</b> with <b>Paul</b> as your technician
+              </h6>
             </div>
           </div>
         </div>
@@ -216,9 +235,13 @@
             <div class="card-body">
               <h5 class="card-title">Gear Adjustment</h5>
               <p class="card-text">
-                Tuning derailleurs for accurate and smooth shifting.
+                Tuning derailleurs for accurate and smooth shifting. Joe has been with us for 20 years and we are certain that any
+                issues or adjustments needed when it comes to your gears can be solved by Joe.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('gearAdjustment')">Book Now</a>
+              <a href="#" class="btn btn-custom" onclick="openForm('Gear Adjustment', 'Joe', '$15.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$15.99</b> with <b>Joe</b> as your technician
+              </h6>
             </div>
           </div>
         </div>
@@ -234,9 +257,13 @@
               <h5 class="card-title">Tire and Tube Services</h5>
               <p class="card-text">
                 Includes tire replacement, tube repair, and inflation services
-                to keep your ride smooth and efficient.
+                to keep your ride smooth and efficient. Tony has been working with tire tubes since a teen
+                and we are confident in his ability to help fix your bike.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('tireTubeChange')">Book Now</a>
+              <a href="#" class="btn btn-custom" onclick="openForm('Tire and Tube Services', 'Tony', '$16.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$16.99</b> with <b>Tony</b> as your technician
+              </h6>
             </div>
           </div>
         </div>
@@ -296,34 +323,41 @@
     <div class="modal">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="formTitle"></h5>
           <span class="close">&times;</span>
-          <form id="formService">
-            <div class="form-group">
-              <label for="fname">First Name:</label>
-              <input type="text" class="form-control" id="fname" name="fname" required>
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name:</label>
-              <input type="text" class="form-control" id="lname" name="lname" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="phoneNumber">Phone Number:</label>
-              <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
-            </div>
-            <div class="form-group">
-              <label for="time">Time:</label>
-              <input type="datetime-local" class="form-control" id="time" name="time" required>
-              <br>
-              <br>
-            </div>
-            <div class="d-flex justify-content-end">
-              <input type="submit" value="Submit" class="btn btn-primary">
-            </div>
-          </form> 
+        </div>
+          <div class="modal-body">
+            <form id="formService">
+              <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" class="form-control" id="fname" name="fname" required>
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" class="form-control" id="lname" name="lname" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+              </div>
+              <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="datetime-local" class="form-control" id="time" name="time" required>
+                <br>
+                <br>
+              </div>
+              <div>
+              <div class="d-flex" style="justify-content: space-between;">
+                <h6 id="formSub"></h6>
+                <input type="submit" value="Submit" class="btn btn-primary">
+              </div>
+            </form> 
+          </div>
         </div>
       </div>
 
@@ -337,9 +371,13 @@
     <script src="script.js"></script>
     <script src="services.js"></script>
     <script>
-      function openForm(service) {
+      function openForm(service, name, price) {
         var modal = document.getElementsByClassName("modal")[0];
         modal.style.display = "block";
+        let subtitle = price + " from " + name;
+        document.getElementById('formTitle').innerHTML = service;
+        document.getElementById('formSub').innerHTML = subtitle;
+        
         var span = document.getElementsByClassName("close")[0];
         span.onclick = function() {
           modal.style.display = "none";
