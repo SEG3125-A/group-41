@@ -47,7 +47,7 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
               <a class="nav-link" href="#about">About Us</a>
               <a class="nav-link" href="#services">Services</a>
-              <a class="nav-link" href="#">Contact Us</a>
+              <a class="nav-link" href="#contact">Contact Us</a>
             </div>
           </div>
         </div>
@@ -55,6 +55,7 @@
 
       <h1>Pedal Pro Repair</h1>
       <p class="fs-4">Best Bike repair Shop in Ottawa</p>
+       <p class="fs-4">Located at 79 Sparks St., Ottawa, ON K1P 5A5</p>
       <button onclick="location.href='#services'" type="button" class="btn btn-success btn-lg">Book a Service</button>
     </div>
     <div class="about-section min-vh-100 bg-light py-5" id="about">
@@ -149,7 +150,7 @@
                 brake pads to choose from. Mike is a friendly expert who can help
                 replace your brake pad so you're good to go back to riding.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('Brake Pad Replacement', 'Mike', '$39.99')">Book Now</a>
+              <a class="btn btn-custom" onclick="openForm('Brake Pad Replacement', 'Mike', '$39.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$39.99</b> with <b>Mike</b> as your technician
               </h6>
@@ -173,7 +174,7 @@
                 to bikes and their performance and we are certain Addy and Mikeal
                 can get your bike up to your performance standards.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('Performance Upgrades', 'Addy or Mikeal', '$69.99')">Book Now</a>
+              <a class="btn btn-custom" onclick="openForm('Performance Upgrades', 'Addy or Mikeal', '$69.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$69.99</b> with <b>Addy</b> or <b>Mikeal</b> as your technician
               </h6>
@@ -196,7 +197,7 @@
                 are some of our top technicians and will ensure that your next ride
                 will be a balanced and smooth one.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('Wheel Truing and Alignment', 'Mikeal or Addy', '$19.99')">Book Now</a>
+              <a class="btn btn-custom" onclick="openForm('Wheel Truing and Alignment', 'Mikeal or Addy', '$19.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$19.99</b> with <b>Mikeal</b> or <b>Addy</b> as your technician
               </h6>
@@ -219,7 +220,7 @@
                 seat technician and has decades of experiences leaving customers satisfied
                 and comfortable with his seat choices.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('Seat Replacement', 'Paul', '$9.99')">Book Now</a>
+              <a class="btn btn-custom" onclick="openForm('Seat Replacement', 'Paul', '$9.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$9.99</b> with <b>Paul</b> as your technician
               </h6>
@@ -240,7 +241,7 @@
                 Tuning derailleurs for accurate and smooth shifting. Joe has been with us for 20 years and we are certain that any
                 issues or adjustments needed when it comes to your gears can be solved by Joe.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('Gear Adjustment', 'Joe', '$15.99')">Book Now</a>
+              <a class="btn btn-custom" onclick="openForm('Gear Adjustment', 'Joe', '$15.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$15.99</b> with <b>Joe</b> as your technician
               </h6>
@@ -262,7 +263,8 @@
                 to keep your ride smooth and efficient. Tony has been working with tire tubes since a teen
                 and we are confident in his ability to help fix your bike.
               </p>
-              <a href="#" class="btn btn-custom" onclick="openForm('Tire and Tube Services', 'Tony', '$16.99')">Book Now</a>
+              <a 
+               class="btn btn-custom" onclick="openForm('Tire and Tube Services', 'Tony', '$16.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$16.99</b> with <b>Tony</b> as your technician
               </h6>
@@ -272,12 +274,12 @@
       </div>
     </div>
 
-    <div class="contact-section bg-light py-5">
+    <div class="contact-section bg-light py-5" id="contact">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <img
-              src="placeholder-contact-image.jpg"
+              src="./images/map.png"
               alt="Contact Image"
               class="img-fluid"
             />
@@ -318,11 +320,13 @@
               </form>
             </div>
           </div>
+            <h3> Address: 79 Sparks St., Ottawa, ON K1P 5A5</h3>
+
         </div>
       </div>
     </div>
     <div class="modal">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title" id="formTitle"></h5>
@@ -355,7 +359,7 @@
               <div>
               <div class="d-flex" style="justify-content: space-between;">
                 <h6 id="formSub"></h6>
-                <input type="submit" value="Submit" class="btn btn-primary">
+                <input type="submit" value="Submit" class="btn btn-custom">
               </div>
             </form> 
           </div>
