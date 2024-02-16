@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <div
@@ -18,9 +19,7 @@
       style="
         background-image: url('./images/bgimage.jpg');
         background-size: cover;
-        background-position: center;
-      "
-    >
+        background-position: center;">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -335,7 +334,7 @@
           <span class="close">&times;</span>
         </div>
           <div class="modal-body">
-            <form id="formService">
+            <form id="formService" method="post">
               <div class="form-group">
                 <label for="fname">First Name:</label>
                 <input type="text" class="form-control" id="fname" name="fname" required>
@@ -351,34 +350,44 @@
               <div class="form-group">
                 <label for="phoneNumber">Phone Number:</label>
                 <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
-              </div>
-              <div class="form-group">
-                <label for="time">Time:</label>
-                <input type="datetime-local" class="form-control" id="time" name="time" required>
-              </div>
-              <!-- credit card information -->
-              <div>
-                <div class="form-group">
-                  <label for="cc">Credit Card:</label>
-                  <input type="text" class="form-control" id="cc" name="cc" required>
-                </div>
-                <div class="form-group">
-                  <label for="exp">Expiration Date:</label>
-                  <input type="text" class="form-control" id="exp" name="exp" required>
-                </div>
-                <div class="form-group">
-                  <label for="cvv">CVV:</label>
-                  <input type="text" class="form-control" id="cvv" name="cvv" required>
-                </div>
+                <small id="phoneError" class="form-text text-danger"></small>
               </div>
               <!-- Technician list -->
               <div class="form-group">
                 <label for="technician">Technician:</label>
                 <select id="technician" name="technician" class="form-control" required>
                 </select>
-                <br>
-                <br>
               <div>
+              <div class="form-group">
+                <label for="time">Booking day:</label>
+                <select name="bookingDay" id="bookingDay" class="form-control" required>
+                  <option value="" disabled selected>Select a technician to choose a day</option>
+                </select>
+              </div>
+              <div>
+                <label for="time">Booking time:</label>
+                <input type="time" id="time" name="time" class="form-control" required>
+              </div>
+              <!-- credit card information -->
+              <div>
+                <div class="form-group">
+                  <label for="cc">Credit Card:</label>
+                  <input type="number" class="form-control" id="cc" name="cc" required>
+                  <small id="ccError" class="form-text text-danger"></small>
+                </div>
+                <div class="form-group">
+                  <label for="exp">Expiration Date:</label>
+                  <input type="month" class="form-control" id="exp" name="exp" required>
+                  <small id="expError" class="form-text text-danger"></small>
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV:</label>
+                  <input type="number" class="form-control" id="cvv" name="cvv"  minlength="3" maxlength="3" required>
+                  <small id="cvvError" class="form-text text-danger"></small>
+                </div>
+                <br>
+                <br>
+              </div>
 
               <div class="d-flex" style="justify-content: space-between;">
                 <h6 id="formSub"></h6>
@@ -397,102 +406,6 @@
     ></script>
     <script src="script.js"></script>
     <script src="services.js"></script>
-    <script>
-
-      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-      });
-
-      function openForm(service, name, price) {
-        var modal = document.getElementsByClassName("modal")[0];
-        modal.style.display = "block";
-        let subtitle = price + " from " + name;
-        document.getElementById('formTitle').innerHTML = service;
-        document.getElementById('formSub').innerHTML = subtitle;
-
-        var technician = document.getElementById("technician");
-        technician.innerHTML = "";
-        var option = document.createElement("option");
-        option.text = "Select a technician";
-        option.disabled = true;
-        option.selected = true;
-        technician.appendChild(option);
-
-
-        var techList = getTechniciansByService(service);
-        for (var i = 0; i < techList.length; i++) {
-          option = document.createElement("option");
-          option.value = techList[i].id;
-          option.text = techList[i].name;
-          technician.appendChild(option);
-        }
-        
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function () {
-          modal.style.display = "none";
-        };
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        };
-        var formService = document.getElementById("formService");
-        formService.onsubmit = function (e) {
-          // check if phone number is valid with regex
-          var phone = document.getElementById("phoneNumber").value;
-          var phoneRegex = /^\d{10}$/;
-          if (!phone.match(phoneRegex)) {
-            alert("Please enter a valid phone number");
-            return;
-          }
-          // check if credit card is valid with regex
-          var cc = document.getElementById("cc").value;
-          var ccRegex = /^\d{16}$/;
-          if (!cc.match(ccRegex)) {
-            alert("Please enter a valid credit card number");
-            return;
-          }
-          // check if expiration date is valid with regex and is in the future
-          var exp = document.getElementById("exp").value;
-          var expRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
-          if (!exp.match(expRegex)) {
-            alert("Please enter a valid expiration date");
-            return;
-          }
-          var expDate = new Date(exp);
-          var currentDate = new Date();
-          if (expDate < currentDate) {
-            alert("Please enter a valid expiration date");
-            return;
-          }
-          // check if cvv is valid with regex
-          var cvv = document.getElementById("cvv").value;
-          var cvvRegex = /^\d{3}$/;
-          if (!cvv.match(cvvRegex)) {
-            alert("Please enter a valid CVV");
-            return;
-          }
-          
-          e.preventDefault();
-          var fname = document.getElementById("fname").value;
-          var lname = document.getElementById("lname").value;
-          var email = document.getElementById("email").value;
-          var phoneNumber = document.getElementById("phoneNumber").value;
-          var time = document.getElementById("time").value;
-          var technician = document.getElementById("technician").value;
-          var cvv = document.getElementById("cvv").value;
-          var cc = document.getElementById("cc").value;
-          var exp = document.getElementById("exp").value;
-          createService(fname, lname, email, phoneNumber, time, service);
-          document.getElementById("fname").value = "";
-          document.getElementById("lname").value = "";
-          document.getElementById("email").value = "";
-          document.getElementById("phoneNumber").value = "";
-          document.getElementById("time").value = "";
-          modal.style.display = "none";
-        };
-      }
-    </script>
+    <script src="form.js"></script>
   </body>
 </html>

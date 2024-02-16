@@ -1,12 +1,5 @@
-function createService(firstName, lastName, email, phoneNumber, time, service){
-    var clientInfo = {
-        name: firstName,
-        lname: lastName,
-        email: email,
-        phoneNumber: phoneNumber
-    }
-
-    var book = bookService(service, time, clientInfo);
+function createService(registrationInfo, service){
+    var book = bookService(service, registrationInfo);
     
     if (book) {
         alert("Service booked successfully");

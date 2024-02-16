@@ -78,48 +78,58 @@ var technicians = [
         "id": 1,
         "name": "Addy Vargas",
         "value": "addyVargas",
+        "offDays": [2, 4]
+        
     },
     {
         "id": 2,
         "name": "Mikael Johnson",
         "value": "mikaelJohnson",
+        "offDays": [3, 1]
     },
     {
         "id": 3,
         "name": "Paul Smith",
         "value": "paulSmith",
+        "offDays": [4]
     },
     {
         "id": 4,
         "name": "Joe Doe",
         "value": "joeDoe",
+        "offDays": [0]
     },
     {
         "id": 5,
         "name": "Mike Vick",
         "value": "mikeVick",
+        "offDays": [2]
     },
     {
         "id": 6,
         "name": "Tony Stark",
         "value": "tonyStark",
+        "offDays": [1, 3]
     }
 ]
 
 var bookings = []
 
-function bookService(value, time, clientInfo) {
+function bookService(value, registrationInfo) {
     var service = services.find(s => s.value === value);
-
-    var found = bookings.find(b => b.time === time);
+    var found = bookings.find(b => b.time === registrationInfo.time 
+        && b.day === registrationInfo.day
+        && b.technician === registrationInfo.technician);
 
     if (!found && service) {
         bookings.push({
-            time: time,
-            fname: clientInfo.name,
-            lname: clientInfo.lname,
-            email: clientInfo.email,
-            phoneNumber: clientInfo.phoneNumber,
+            time: registrationInfo.time,
+            day: registrationInfo.day,
+            fname: registrationInfo.name,
+            lname: registrationInfo.lname,
+            email: registrationInfo.email,
+            phoneNumber: registrationInfo.phoneNumber,
+            technician: registrationInfo.technician,
             services: [service]
         });
         return true;
