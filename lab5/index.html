@@ -355,10 +355,31 @@
               <div class="form-group">
                 <label for="time">Time:</label>
                 <input type="datetime-local" class="form-control" id="time" name="time" required>
-                <br>
-                <br>
               </div>
+              <!-- credit card information -->
               <div>
+                <div class="form-group">
+                  <label for="cc">Credit Card:</label>
+                  <input type="text" class="form-control" id="cc" name="cc" required>
+                </div>
+                <div class="form-group">
+                  <label for="exp">Expiration Date:</label>
+                  <input type="text" class="form-control" id="exp" name="exp" required>
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV:</label>
+                  <input type="text" class="form-control" id="cvv" name="cvv" required>
+                </div>
+              </div>
+              <!-- Technician list -->
+              <div class="form-group">
+                <label for="technician">Technician:</label>
+                <select id="technician" name="technician" class="form-control" required>
+                </select>
+                <br>
+                <br>
+              <div>
+
               <div class="d-flex" style="justify-content: space-between;">
                 <h6 id="formSub"></h6>
                 <input type="submit" value="Submit" class="btn btn-custom">
@@ -389,6 +410,23 @@
         let subtitle = price + " from " + name;
         document.getElementById('formTitle').innerHTML = service;
         document.getElementById('formSub').innerHTML = subtitle;
+
+        var technician = document.getElementById("technician");
+        technician.innerHTML = "";
+        var option = document.createElement("option");
+        option.text = "Select a technician";
+        option.disabled = true;
+        option.selected = true;
+        technician.appendChild(option);
+
+
+        var techList = getTechniciansByService(service);
+        for (var i = 0; i < techList.length; i++) {
+          option = document.createElement("option");
+          option.value = techList[i].id;
+          option.text = techList[i].name;
+          technician.appendChild(option);
+        }
         
         var span = document.getElementsByClassName("close")[0];
         span.onclick = function () {
