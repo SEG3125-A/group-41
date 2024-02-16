@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedal Pro Repair</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div
+      class="bg-image vh-100 d-flex flex-column justify-content-center align-items-center text-white text-center"
+      style="
+        background-image: url('./images/bgimage.jpg');
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="./images/icon.png"
+              alt="Logo"
+              style="width: 30px"
+              class="d-inline-block align-text-top"
+            />
+            Pedal Pro Repair
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#about">About Us</a>
+              <a class="nav-link" href="#services">Services</a>
+              <a class="nav-link" href="#contact">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <h1 data-bs-toggle="tooltip" data-bs-placement="top" title="Made by Paul, Aditya and Mikhail">Pedal Pro Repair</h1>
+      <p class="fs-4">Best Bike repair Shop in Ottawa</p>
+       <p class="fs-4">Located at 79 Sparks St., Ottawa, ON K1P 5A5</p>
+      <button onclick="location.href='#services'" type="button" class="btn btn-success btn-lg"
+      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click to book a service">Book a Service</button>
+    </div>
+    <div class="about-section min-vh-100 bg-light py-5" id="about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <img src="./images/about.png" alt="About Us" class="img-fluid" />
+          </div>
+          <div class="col-md-6">
+            <h2>About Us</h2>
+            <p>
+              Welcome to Pedal Pro Repair, your trusted partner in keeping your
+              bicycle in peak condition. Founded in the heart of our community,
+              we are a team of passionate cyclists and skilled mechanics
+              dedicated to providing the highest quality bike repair services.
+              At Pedal Pro Repair, we understand the bond between a cyclist and
+              their bike. Whether you rely on your bike for daily commutes,
+              weekend adventures, or professional racing, we're here to ensure
+              your ride is smooth, safe, and enjoyable. Our founder, Alex
+              Turner, launched Pedal Pro Repair with a vision to create a bike
+              repair shop that stands apart through expertise, trust, and
+              community engagement. With over a decade of experience in the
+              cycling industry, Alex and our team of certified mechanics are
+              committed to excellence in every repair, big or small.
+            </p>
+          </div>
+        </div>
+        <h3 class="text-center mt-5 mb-4">Testimonials</h3>
+        <div class="row">
+          <!-- Testimonial Card 1 -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                  "This is an amazing bike shop! They fixed my bike quickly and
+                  efficiently. I highly recommend them to anyone in need of bike
+                  repairs."
+                </p>
+                <footer class="blockquote-footer">
+                  Jane Doe, <cite title="Source Title">Cyclist</cite>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial Card 2 -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                  "Excellent customer service and high-quality work. My bike has
+                  never been in better condition. Thank you, Pedal Pro Repair!"
+                </p>
+                <footer class="blockquote-footer">
+                  John Smith, <cite title="Source Title">Bike Enthusiast</cite>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial Card 3 -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                  "Very knowledgeable and friendly staff. They went above and
+                  beyond to help me choose the right accessories for my bike."
+                </p>
+                <footer class="blockquote-footer">
+                  Emily Johnson,
+                  <cite title="Source Title">Professional Cyclist</cite>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container min-vh-100 my-5" id="services">
+      <h2 class="text-center mb-4">Our Services</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Service Card 1 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="./images/bikebrake.png"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h4 class="card-title">Brake Pad Replacement</h4>
+              <p class="card-text">
+                If you need a brake pad replacement, we have a wide selection of
+                brake pads to choose from. Mike is a friendly expert who can help
+                replace your brake pad so you're good to go back to riding.
+              </p>
+              <a class="btn btn-custom" onclick="openForm('brakePad', 'Mike', '$39.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$39.99</b> with <b>Mike</b> as your technician
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!-- Service Card 2 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="./images/performance.webp"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Performance Upgrades</h5>
+              <p class="card-text">
+                Installing upgraded components like carbon wheels, lighter
+                frames, or advanced gearing systems for those looking to enhance
+                their bike's performance. Akky and Mikeal are pros when it comes
+                to bikes and their performance and we are certain Addy and Mikeal
+                can get your bike up to your performance standards.
+              </p>
+              <a class="btn btn-custom" onclick="openForm('performanceUpgrades', 'Addy or Mikeal', '$69.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$69.99</b> with <b>Addy</b> or <b>Mikeal</b> as your technician
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!-- Service Card 3 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="./images/wheels.jpg"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Wheel Truing and Alignment</h5>
+              <p class="card-text">
+                Addressing issues with wheel balance, roundness, and alignment
+                to ensure a smooth ride and prevent premature wear. Mikeal and Addy
+                are some of our top technicians and will ensure that your next ride
+                will be a balanced and smooth one.
+              </p>
+              <a class="btn btn-custom" onclick="openForm('turingAndAlignment', 'Mikeal or Addy', '$19.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$19.99</b> with <b>Mikeal</b> or <b>Addy</b> as your technician
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!-- Service Card 4 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="./images/bikeseat.jpg"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Seat Replacement</h5>
+              <p class="card-text">
+                We have a wide selection of seats to choose from, and our team
+                of skilled mechanics can help you find the perfect fit. Paul is our current
+                seat technician and has decades of experiences leaving customers satisfied
+                and comfortable with his seat choices.
+              </p>
+              <a class="btn btn-custom" onclick="openForm('seatReplacement', 'Paul', '$9.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$9.99</b> with <b>Paul</b> as your technician
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!-- Service Card 5 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="./images/gear.webp"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Gear Adjustment</h5>
+              <p class="card-text">
+                Tuning derailleurs for accurate and smooth shifting. Joe has been with us for 20 years and we are certain that any
+                issues or adjustments needed when it comes to your gears can be solved by Joe.
+              </p>
+              <a class="btn btn-custom" onclick="openForm('gearAdjustment', 'Joe', '$15.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$15.99</b> with <b>Joe</b> as your technician
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!-- Service Card 6 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="./images/tires.webp"
+              class="card-img-top"
+              alt="Service Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Tire and Tube Services</h5>
+              <p class="card-text">
+                Includes tire replacement, tube repair, and inflation services
+                to keep your ride smooth and efficient. Tony has been working with tire tubes since a teen
+                and we are confident in his ability to help fix your bike.
+              </p>
+              <a 
+               class="btn btn-custom" onclick="openForm('tireTubeChange', 'Tony', '$16.99')">Book Now</a>
+              <h6 class="card-subtitle" style="margin-top: 3%;">
+                <b>$16.99</b> with <b>Tony</b> as your technician
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section bg-light py-5" id="contact">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <img
+              src="./images/map.png"
+              alt="Contact Image"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-lg-6">
+            <div class="p-4 border rounded-3 bg-white">
+              <h2>Contact us</h2>
+              <form>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Subject"
+                  />
+                </div>
+                <div class="mb-3">
+                  <textarea
+                    class="form-control"
+                    rows="3"
+                    placeholder="Your Message"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+            </div>
+          </div>
+            <h3> Address: 79 Sparks St., Ottawa, ON K1P 5A5</h3>
+
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="formTitle"></h5>
+          <span class="close">&times;</span>
+        </div>
+          <div class="modal-body">
+            <form id="formService">
+              <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" class="form-control" id="fname" name="fname" required>
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" class="form-control" id="lname" name="lname" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+              </div>
+              <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="datetime-local" class="form-control" id="time" name="time" required>
+                <br>
+                <br>
+              </div>
+              <div>
+              <div class="d-flex" style="justify-content: space-between;">
+                <h6 id="formSub"></h6>
+                <input type="submit" value="Submit" class="btn btn-custom">
+              </div>
+            </form> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+    <script src="services.js"></script>
+    <script>
+
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+
+      function openForm(service, name, price) {
+        var modal = document.getElementsByClassName("modal")[0];
+        modal.style.display = "block";
+        let subtitle = price + " from " + name;
+        document.getElementById('formTitle').innerHTML = service;
+        document.getElementById('formSub').innerHTML = subtitle;
+        
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function () {
+          modal.style.display = "none";
+        };
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+        var formService = document.getElementById("formService");
+        formService.onsubmit = function (e) {
+          e.preventDefault();
+          var fname = document.getElementById("fname").value;
+          var lname = document.getElementById("lname").value;
+          var email = document.getElementById("email").value;
+          var phoneNumber = document.getElementById("phoneNumber").value;
+          var time = document.getElementById("time").value;
+          createService(fname, lname, email, phoneNumber, time, service);
+          document.getElementById("fname").value = "";
+          document.getElementById("lname").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("phoneNumber").value = "";
+          document.getElementById("time").value = "";
+          modal.style.display = "none";
+        };
+      }
+    </script>
+  </body>
+</html>
