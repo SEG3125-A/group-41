@@ -47,13 +47,7 @@ function openForm(service, name, price) {
 
 $(document).ready(function() {
   $('#datepicker').datepicker({
-    beforeShowDay: $.datepicker.noWeekends // Initially disable weekends
-  });
-  
-  $("#datepicker").datepicker({
-    onSelect: function() {
-      $(this).valid(); // This will re-validate the datepicker field
-    }
+    beforeShowDay: $.datepicker.noWeekends
   });
 
   $("#technician").change(updateDatepicker);
