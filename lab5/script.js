@@ -1,4 +1,5 @@
 function createService(registrationInfo, service){
+    console.log("ooo");
     var book = bookService(service, registrationInfo);
     
     if (book) {

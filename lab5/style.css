@@ -83,3 +83,8 @@
   visibility: visible;
   opacity: 1;
 }
+
+label.error, .error{
+  color: red;
+  font-size: 1em;
+}

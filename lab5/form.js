@@ -46,55 +46,6 @@ function openForm(service, name, price) {
       modal.style.display = "none";
     }
   };
-
-  var formService = document.getElementById("formService");
-  formService.onsubmit = function (e) {
-    var valid = formValidation();
-    if (!valid) {
-        e.preventDefault();
-        return;
-    }
-    
-    var fname = document.getElementById("fname").value;
-    var lname = document.getElementById("lname").value;
-    var email = document.getElementById("email").value;
-    var phoneNumber = document.getElementById("phoneNumber").value;
-    var bookingDay = document.getElementById("bookingDay").value;
-    var bookingTime = document.getElementById("time").value;
-    var technician = document.getElementById("technician").value;
-    var cvv = document.getElementById("cvv").value;
-    var cc = document.getElementById("cc").value;
-    var exp = document.getElementById("exp").value;
-    var registrationInfo = {
-        name: fname,
-        lname: lname,
-        email: email,
-        phoneNumber: phoneNumber,
-        cc: cc,
-        exp: exp,
-        cvv: cvv,
-        technician: technician,
-        day: bookingDay,
-        time: bookingTime
-    };
-
-    createService(registrationInfo, service);
-    document.getElementById("fname").value = "";
-    document.getElementById("lname").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("phoneNumber").value = "";
-    document.getElementById("time").value = "";
-    document.getElementById("phoneError").innerHTML = "";
-    document.getElementById("ccError").innerHTML = "";
-    document.getElementById("expError").innerHTML = "";
-    document.getElementById("cvvError").innerHTML = "";
-    document.getElementById("cc").value = "";
-    document.getElementById("exp").value = "";
-    document.getElementById("cvv").value = "";
-    document.getElementById("bookingDay").value = "";
-    modal.style.display = "none";
-    e.preventDefault();
-  };
 }
 
 function availableDays(technician) {
@@ -122,51 +73,159 @@ function availableDays(technician) {
   }
 }
 
-function formValidation() {
-    // check if phone number is valid with regex
-    var phone = document.getElementById("phoneNumber").value;
-    var phoneRegex = /^\d{10}$/;
-    if (!phone.match(phoneRegex)) {
-        document.getElementById("phoneError").innerHTML = "Please enter a valid phone number (10 digits)";
-        return false;
-    } else {
-        document.getElementById("phoneError").innerHTML = "";
+$(document).ready(function() {
+  $.validator.addMethod("phoneNumber", function(value, element) {
+      return this.optional(element) || /^\(\d{3}\)\s\d{3}-\d{4}$/.test(value);
+  }, "Please enter a valid phone number in the format (xxx) xxx-xxxx");
+  
+  $.validator.addMethod("noNumbers", function(value, element) {
+    return this.optional(element) || !/\d/.test(value);
+  }, "This field cannot contain numbers");
+
+  $.validator.addMethod("ccNumber", function(value, element) {
+    return this.optional(element) || /^\d{16}$/.test(value);
+  }, "Credit card number must be 16 digits long");
+
+  $.validator.addMethod("email", function(value, element) {
+    return this.optional(element) || /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(value);
+  }, "Please enter a valid email address");
+
+  $.validator.addMethod("expirationDate", function(value, element) {
+    if (this.optional(element)) {
+        return true;
     }
+    const [year, month] = value.split("-");
+    const expirationDate = new Date(year, month - 1);
+    const currentDate = new Date();
+    currentDate.setMonth(currentDate.getMonth());
+    currentDate.setDate(1);
+    return expirationDate >= currentDate;
+  }, "Expiration date must be in the future");
 
-    // check if credit card is valid with regex
-    var cc = document.getElementById("cc").value;
-    var ccRegex = /^\d{16}$/;
-    if (!cc.match(ccRegex)) {
-      document.getElementById("ccError").innerHTML = "Please enter a valid credit card number (16 digits)";
-      return false;
-    } else {
-        document.getElementById("ccError").innerHTML = "";
-    }
+  $.validator.addMethod("cvv", function(value, element) {
+    return this.optional(element) || /^\d{3}$/.test(value);
+  }, "CVV must be 3 digits long");
 
-    // check if expiration date is in the future Month Year format ex May, 2023
-    var exp = document.getElementById("exp").value;
-    var today = new Date();
-    var currentYear = today.getFullYear();
-    var currentMonth = today.getMonth() + 1;
-    var expYear = parseInt(exp.split("-")[0]);
-    var expMonth = parseInt(exp.split("-")[1]);
-    if (expYear < currentYear || (expYear === currentYear && expMonth <= currentMonth)) {
-        document.getElementById("expError").innerHTML = "Please enter a valid expiration date";
-        return false;
-    } else {
-        document.getElementById("expError").innerHTML = "";
-    }
+  $("#formService").validate({
+      rules: {
+          phoneNumber: {
+              required: true,
+              phoneNumber: true
+          },
+          fname: {
+            required: true,
+            noNumbers: true
+        },
+        lname: {
+            required: true,
+            noNumbers: true
+        },
+        cc: {
+            required: true,
+            ccNumber: true
+        },
+        exp: {
+            required: true,
+            expirationDate: true
+        },
+        cvv: {
+            required: true,
+            cvv: true
+        },
+        email: {
+            required: true,
+            email: true
+        }
+      },
+      messages: {
+          phoneNumber: {
+              required: "Phone number is required"
+          },
+          fname: {
+            required: "Please enter your first name",
+            noNumbers: "First name cannot contain numbers"
+        },
+        lname: {
+            required: "Please enter your last name",
+            noNumbers: "Last name cannot contain numbers"
+        },
+        cc: {
+            required: "Credit card number is required"
+        },
+        exp: {
+            required: "Expiration date is required"
+        },
+        cvv: {
+            required: "CVV is required"
+        },
+        email: {
+            required: "Email is required"
+        }
+      },
+      errorPlacement: function(error, element) {
+          if (element.attr("name") == "phoneNumber" ) {
+              error.appendTo("#phoneError");
+          } else if (element.attr("name") == "fname") {
+              error.appendTo("#fnameError");
+          } else if (element.attr("name") == "lname") {
+              error.appendTo("#lnameError");
+          } else if (element.attr("name") == "cc") {
+              error.appendTo("#ccError");
+          } else if (element.attr("name") == "exp") {
+              error.appendTo("#expError");
+          } else if (element.attr("name") == "cvv") {
+              error.appendTo("#cvvError");
+          } else if (element.attr("name") == "email") {
+              error.appendTo("#emailError");
+          } else {
+              error.insertAfter(element);
+          }
+      }
+  });
 
-    // check if cvv is valid with regex
-    var cvv = document.getElementById("cvv").value;
-    var cvvRegex = /^\d{3}$/;
-    if (!cvv.match(cvvRegex)) {
-        document.getElementById("cvvError").innerHTML = "Please enter a valid CVV number (3 digits)";
-        return false;
-    } else {
-        document.getElementById("cvvError").innerHTML = "";
-    }
+  $("#formService").submit(function(e) {
+      e.preventDefault();
 
-    return true;
-}
-
+      if ($(this).valid()) {
+          var fname = document.getElementById("fname").value;
+          var lname = document.getElementById("lname").value;
+          var email = document.getElementById("email").value;
+          var phoneNumber = document.getElementById("phoneNumber").value;
+          var bookingDay = document.getElementById("bookingDay").value;
+          var bookingTime = document.getElementById("time").value;
+          var technician = document.getElementById("technician").value;
+          var cvv = document.getElementById("cvv").value;
+          var cc = document.getElementById("cc").value;
+          var exp = document.getElementById("exp").value;
+          var registrationInfo = {
+              name: fname,
+              lname: lname,
+              email: email,
+              phoneNumber: phoneNumber,
+              cc: cc,
+              exp: exp,
+              cvv: cvv,
+              technician: technician,
+              day: bookingDay,
+              time: bookingTime
+          };
+          var service = document.getElementById("formTitle").innerText.trim();
+          createService(registrationInfo, service);
+          document.getElementById("fname").value = "";
+          document.getElementById("lname").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("phoneNumber").value = "";
+          document.getElementById("time").value = "";
+          document.getElementById("phoneError").innerHTML = "";
+          document.getElementById("ccError").innerHTML = "";
+          document.getElementById("expError").innerHTML = "";
+          document.getElementById("cvvError").innerHTML = "";
+          document.getElementById("cc").value = "";
+          document.getElementById("exp").value = "";
+          document.getElementById("cvv").value = "";
+          document.getElementById("bookingDay").value = "";
+          var modal = document.getElementsByClassName("modal")[0];
+          modal.style.display = "none";
+      }
+  });
+});
