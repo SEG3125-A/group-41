@@ -7,7 +7,14 @@ function openForm(service, name, price) {
   var modal = document.getElementsByClassName("modal")[0];
   modal.style.display = "block";
   let subtitle = price + " from " + name;
-  document.getElementById('formTitle').innerHTML = service;
+  // add <i class="fa fa-shopping-cart" aria-hidden="true"></i> to formTitle
+  var icon = document.createElement("i");
+  icon.className = "fa fa-shopping-cart";
+  icon.setAttribute("aria-hidden", "true");
+  var formTitle = document.getElementById("formTitle");
+  formTitle.innerHTML = "";
+  formTitle.appendChild(icon);
+  formTitle.innerHTML += " " + service;
   document.getElementById('formSub').innerHTML = subtitle;
 
   var technician = document.getElementById("technician");
@@ -17,7 +24,6 @@ function openForm(service, name, price) {
   option.disabled = true;
   option.selected = true;
   technician.appendChild(option);    
-
 
   var techList = getTechniciansByService(service);
   for (var i = 0; i < techList.length; i++) {
