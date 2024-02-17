@@ -32,13 +32,10 @@ function openForm(service, name, price) {
     option.text = techList[i].name;
     technician.appendChild(option);
   }
-
-  technician.onchange = function () {
-    availableDays(techList[technician.selectedIndex - 1]);
-  };
   
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function () {
+    resetForm();
     modal.style.display = "none";
   };
   window.onclick = function (event) {
@@ -48,32 +45,21 @@ function openForm(service, name, price) {
   };
 }
 
-function availableDays(technician) {
-  var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  // Remove the days that are off for the technician
-  for (var i = 0; i < technician.offDays.length; i++) {
-    var index = technician.offDays[i];
-    if (index > -1) {
-      days.splice(index, 1);
-    }
-  }
-  var select = document.getElementById("bookingDay");
-  select.innerHTML = "";
-  var option = document.createElement("option");
-  option.text = "Select a date";
-  option.disabled = true;
-  option.selected = true;
-  select.appendChild(option);
-
-  for (var i = 0; i < days.length; i++) {
-    option = document.createElement("option");
-    option.value = days[i];
-    option.text = days[i];
-    select.appendChild(option);
-  }
-}
-
 $(document).ready(function() {
+  $('#datepicker').datepicker({
+    beforeShowDay: $.datepicker.noWeekends // Initially disable weekends
+  });
+  
+  $("#datepicker").datepicker({
+    onSelect: function() {
+      $(this).valid(); // This will re-validate the datepicker field
+    }
+  });
+
+  $("#technician").change(updateDatepicker);
+
+  updateDatepicker();
+
   $.validator.addMethod("phoneNumber", function(value, element) {
       return this.optional(element) || /^\(\d{3}\)\s\d{3}-\d{4}$/.test(value);
   }, "Please enter a valid phone number in the format (xxx) xxx-xxxx");
@@ -106,13 +92,14 @@ $(document).ready(function() {
     return this.optional(element) || /^\d{3}$/.test(value);
   }, "CVV must be 3 digits long");
 
+
   $("#formService").validate({
       rules: {
-          phoneNumber: {
+        phoneNumber: {
               required: true,
               phoneNumber: true
-          },
-          fname: {
+        },
+        fname: {
             required: true,
             noNumbers: true
         },
@@ -135,6 +122,15 @@ $(document).ready(function() {
         email: {
             required: true,
             email: true
+        },
+        technician: {
+            required: true
+        },
+        datepicker: {
+            required: true
+        },
+        time: {
+            required: true
         }
       },
       messages: {
@@ -160,6 +156,15 @@ $(document).ready(function() {
         },
         email: {
             required: "Email is required"
+        },
+        technician: {
+            required: "Technician is required"
+        },
+        time: {
+            required: "Time is required"
+        },
+        datepicker: {
+            required: "Date is required"
         }
       },
       errorPlacement: function(error, element) {
@@ -177,6 +182,12 @@ $(document).ready(function() {
               error.appendTo("#cvvError");
           } else if (element.attr("name") == "email") {
               error.appendTo("#emailError");
+          } else if (element.attr("name") == "technician") {
+              error.appendTo("#technicianError");
+          } else if (element.attr("name") == "datepicker") {
+              error.appendTo("#dateError");
+          } else if (element.attr("name") == "time") {
+              error.appendTo("#timeError");
           } else {
               error.insertAfter(element);
           }
@@ -191,7 +202,7 @@ $(document).ready(function() {
           var lname = document.getElementById("lname").value;
           var email = document.getElementById("email").value;
           var phoneNumber = document.getElementById("phoneNumber").value;
-          var bookingDay = document.getElementById("bookingDay").value;
+          var bookingDate = document.getElementById("datepicker").value;
           var bookingTime = document.getElementById("time").value;
           var technician = document.getElementById("technician").value;
           var cvv = document.getElementById("cvv").value;
@@ -206,26 +217,53 @@ $(document).ready(function() {
               exp: exp,
               cvv: cvv,
               technician: technician,
-              day: bookingDay,
+              date: bookingDate,
               time: bookingTime
           };
           var service = document.getElementById("formTitle").innerText.trim();
           createService(registrationInfo, service);
-          document.getElementById("fname").value = "";
-          document.getElementById("lname").value = "";
-          document.getElementById("email").value = "";
-          document.getElementById("phoneNumber").value = "";
-          document.getElementById("time").value = "";
-          document.getElementById("phoneError").innerHTML = "";
-          document.getElementById("ccError").innerHTML = "";
-          document.getElementById("expError").innerHTML = "";
-          document.getElementById("cvvError").innerHTML = "";
-          document.getElementById("cc").value = "";
-          document.getElementById("exp").value = "";
-          document.getElementById("cvv").value = "";
-          document.getElementById("bookingDay").value = "";
-          var modal = document.getElementsByClassName("modal")[0];
-          modal.style.display = "none";
+          resetForm();
       }
   });
 });
+
+function resetForm() {
+  document.getElementById("fname").value = "";
+  document.getElementById("lname").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("phoneNumber").value = "";
+  document.getElementById("time").value = "";
+  document.getElementById("phoneError").innerHTML = "";
+  document.getElementById("ccError").innerHTML = "";
+  document.getElementById("expError").innerHTML = "";
+  document.getElementById("cvvError").innerHTML = "";
+  document.getElementById("cc").value = "";
+  document.getElementById("exp").value = "";
+  document.getElementById("cvv").value = "";
+  document.getElementById("datepicker").value = "";
+  document.getElementById("time").value = "";
+  // Clear elements inside small with error attributes
+  var smalls = document.getElementsByTagName("small");
+  for (var i = 0; i < smalls.length; i++) {
+      smalls[i].innerHTML = "";
+  }
+
+  var modal = document.getElementsByClassName("modal")[0];
+  modal.style.display = "none";
+}
+
+function updateDatepicker() {
+  document.getElementById("datepicker").value = "";
+  var selectedTechnician = parseInt($('#technician').val());
+  var offDays = getOffDaysByTechnician(selectedTechnician);
+
+  $('#datepicker').datepicker('option', 'beforeShowDay', function(date) {
+      console.log("date: " + date);
+      var day = date.getDay();
+      // Disable weekends and off-days
+      if (offDays.length === 0)
+          return [day !== 0 && day !== 6];
+      else
+          return [day !== 0 && day !== 6 && !offDays.includes(day)];
+  });
+}

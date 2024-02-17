@@ -356,7 +356,7 @@
               </div>
               <div class="form-group">
                 <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="(xxx) xxx-xxxx" required>
                 <small id="phoneError" class="error"></small>
               </div>
               <!-- Technician list -->
@@ -364,16 +364,17 @@
                 <label for="technician">Technician:</label>
                 <select id="technician" name="technician" class="form-control" required>
                 </select>
+                <small id="technicianError" class="error"></small>
               <div>
               <div class="form-group">
-                <label for="time">Booking day:</label>
-                <select name="bookingDay" id="bookingDay" class="form-control" required>
-                  <option value="" disabled selected>Select a technician to choose a day</option>
-                </select>
+                <label for="time">Booking date:</label>
+                <input type="text" id="datepicker" name="datepicker" required>
+                <small id="dateError" class="error"></small>
               </div>
               <div>
                 <label for="time">Booking time:</label>
                 <input type="time" id="time" name="time" class="form-control" required>
+                <small id="timeError" class="error"></small>
               </div>
               <!-- credit card information -->
               <div>

@@ -118,13 +118,13 @@ var bookings = []
 function bookService(value, registrationInfo) {
     var service = services.find(s => s.value === value);
     var found = bookings.find(b => b.time === registrationInfo.time 
-        && b.day === registrationInfo.day
+        && b.date === registrationInfo.date
         && b.technician === registrationInfo.technician);
 
     if (!found && service) {
         bookings.push({
             time: registrationInfo.time,
-            day: registrationInfo.day,
+            date: registrationInfo.date,
             fname: registrationInfo.name,
             lname: registrationInfo.lname,
             email: registrationInfo.email,
@@ -143,6 +143,16 @@ function getTechniciansByService(value) {
 
     if (service) {
         return service.technicians.map(t => technicians.find(tech => tech.id === t.id));
+    }
+
+    return [];
+}
+
+function getOffDaysByTechnician(value) {
+    var technician = technicians.find(t => t.id === value);
+
+    if (technician) {
+        return technician.offDays;
     }
 
     return [];
