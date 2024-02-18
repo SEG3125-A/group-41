@@ -62,6 +62,10 @@ $(document).ready(function() {
     return this.optional(element) || !/\d/.test(value);
   }, "This field cannot contain numbers");
 
+  $.validator.addMethod("nochar", function(value, element) {
+    return this.optional(element) || /^([^0-9]*)$/.test(value);
+  }, "This field should only contain numbers");
+
   $.validator.addMethod("ccNumber", function(value, element) {
     return this.optional(element) || /^\d{16}$/.test(value);
   }, "Credit card number must be 16 digits long");
@@ -76,7 +80,9 @@ $(document).ready(function() {
     }
     const [year, month] = value.split("-");
     const expirationDate = new Date(year, month - 1);
+    
     const currentDate = new Date();
+    
     currentDate.setMonth(currentDate.getMonth());
     currentDate.setDate(1);
     return expirationDate >= currentDate;
@@ -103,6 +109,7 @@ $(document).ready(function() {
         },
         cc: {
             required: true,
+            nochar: true,
             ccNumber: true
         },
         exp: {
@@ -111,6 +118,7 @@ $(document).ready(function() {
         },
         cvv: {
             required: true,
+            nochar: true,
             cvv: true
         },
         email: {

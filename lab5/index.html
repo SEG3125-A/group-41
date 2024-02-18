@@ -48,8 +48,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <div id="top-bar" class="navbar-nav ms-auto">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
               <a class="nav-link" href="#about">About Us</a>
               <a class="nav-link" href="#services">Services</a>
               <a class="nav-link" href="#contact">Contact Us</a>
@@ -156,7 +156,7 @@
                 brake pads to choose from. Mike is a friendly expert who can help
                 replace your brake pad so you're good to go back to riding.
               </p>
-              <a class="btn btn-custom" onclick="openForm('brakePad', 'Mike', '$39.99')">Book Now</a>
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Brake Pad Replacement" class="btn btn-custom" onclick="openForm('Book Brake Pad Replacement', 'Mike', '$39.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$39.99</b> with <b>Mike</b> as your technician
               </h6>
@@ -180,7 +180,7 @@
                 to bikes and their performance and we are certain Addy and Mikeal
                 can get your bike up to your performance standards.
               </p>
-              <a class="btn btn-custom" onclick="openForm('performanceUpgrades', 'Addy or Mikeal', '$69.99')">Book Now</a>
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Performance Upgrades" class="btn btn-custom" onclick="openForm('Book performance Upgrade', 'Addy or Mikeal', '$69.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$69.99</b> with <b>Addy</b> or <b>Mikeal</b> as your technician
               </h6>
@@ -203,7 +203,7 @@
                 are some of our top technicians and will ensure that your next ride
                 will be a balanced and smooth one.
               </p>
-              <a class="btn btn-custom" onclick="openForm('turingAndAlignment', 'Mikeal or Addy', '$19.99')">Book Now</a>
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Wheel Truing and Alignment" class="btn btn-custom" onclick="openForm('Book Turing And Alignment', 'Mikeal or Addy', '$19.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$19.99</b> with <b>Mikeal</b> or <b>Addy</b> as your technician
               </h6>
@@ -226,7 +226,7 @@
                 seat technician and has decades of experiences leaving customers satisfied
                 and comfortable with his seat choices.
               </p>
-              <a class="btn btn-custom" onclick="openForm('seatReplacement', 'Paul', '$9.99')">Book Now</a>
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Seat Replacement" class="btn btn-custom" onclick="openForm('Book Seat Replacement', 'Paul', '$9.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$9.99</b> with <b>Paul</b> as your technician
               </h6>
@@ -247,7 +247,7 @@
                 Tuning derailleurs for accurate and smooth shifting. Joe has been with us for 20 years and we are certain that any
                 issues or adjustments needed when it comes to your gears can be solved by Joe.
               </p>
-              <a class="btn btn-custom" onclick="openForm('gearAdjustment', 'Joe', '$15.99')">Book Now</a>
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Gear Adjustemnt" class="btn btn-custom" onclick="openForm('Book Gear Adjustment', 'Joe', '$15.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$15.99</b> with <b>Joe</b> as your technician
               </h6>
@@ -270,7 +270,7 @@
                 and we are confident in his ability to help fix your bike.
               </p>
               <a 
-               class="btn btn-custom" onclick="openForm('tireTubeChange', 'Tony', '$16.99')">Book Now</a>
+              data-bs-toggle="tooltip" data-bs-placement="top" title="Book Tire and Tube Servies" class="btn btn-custom" onclick="openForm('Book Tire and Tube Service', 'Tony', '$16.99')">Book Now</a>
               <h6 class="card-subtitle" style="margin-top: 3%;">
                 <b>$16.99</b> with <b>Tony</b> as your technician
               </h6>
@@ -351,12 +351,12 @@
               </div>
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input  data-bs-toggle="tooltip" data-bs-placement="top" title="We won't use your email to send you unwanted marketing" type="email" class="form-control" id="email" name="email" required>
                 <small id="emailError" class="error"></small>
               </div>
               <div class="form-group">
                 <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="(xxx) xxx-xxxx" required>
+                <input  data-bs-toggle="tooltip" data-bs-placement="top" title="Your phone number will only be used to send you info about your upcoming appointment" type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="(xxx) xxx-xxxx" required>
                 <small id="phoneError" class="error"></small>
               </div>
               <!-- Technician list -->
@@ -368,29 +368,29 @@
               <div>
               <div class="form-group">
                 <label for="time">Booking date:</label>
-                <input type="text" id="datepicker" name="datepicker" required>
+                <input  data-bs-toggle="tooltip" data-bs-placement="top" title="Only available days are shown" type="text" id="datepicker" name="datepicker" required>
                 <small id="dateError" class="error"></small>
               </div>
               <div>
                 <label for="time">Booking time:</label>
-                <input type="time" id="time" name="time" class="form-control" required>
+                <input  data-bs-toggle="tooltip" data-bs-placement="top" title="We are open 10-4 every day, holidays excluded" type="time" id="time" name="time" class="form-control" required>
                 <small id="timeError" class="error"></small>
               </div>
               <!-- credit card information -->
               <div>
                 <div class="form-group">
                   <label for="cc">Credit Card:</label>
-                  <input type="number" class="form-control" id="cc" name="cc" required>
+                  <input input  data-bs-toggle="tooltip" data-bs-placement="top" title="Input your credit card without spaces" type="text" class="form-control" id="cc" name="cc" required>
                   <small id="ccError" class="error"></small>
                 </div>
                 <div class="form-group">
                   <label for="exp">Expiration Date:</label>
-                  <input type="month" class="form-control" id="exp" name="exp" required>
+                  <input input  data-bs-toggle="tooltip" data-bs-placement="top" title="Input in form YYYY-MM" type="month" class="form-control" id="exp" name="exp" placeholder="YYYY-MM" required>
                   <small id="expError" class="error"></small>
                 </div>
                 <div class="form-group">
                   <label for="cvv">CVV:</label>
-                  <input type="number" class="form-control" id="cvv" name="cvv"  minlength="3" maxlength="3" required>
+                  <input  data-bs-toggle="tooltip" data-bs-placement="top" title="The 3 numbers on the back of your credit card" type="text" class="form-control" id="cvv" name="cvv"  minlength="3" maxlength="3" placeholder="CVV" required >
                   <small id="cvvError" class="error"></small>
                 </div>
                 <br>
@@ -415,5 +415,19 @@
     <script src="script.js"></script>
     <script src="services.js"></script>
     <script src="form.js"></script>
+    <script>
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("top-bar");
+      var btns = header.getElementsByClassName("nav-link");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        if (current.length > 0) { 
+          current[0].className = current[0].className.replace(" active", "");
+        }
+        this.className += " active";
+        });
+      }
+      </script>
   </body>
 </html>
