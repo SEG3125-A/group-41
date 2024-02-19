@@ -3,6 +3,7 @@ var services = [
         "id": 1,
         "name": "Brake pad",
         "value": "brakePad",
+        "formValue": "Book Brake Pad Replacement",
         "price": 39.99,
         "technicians": [
             {
@@ -14,6 +15,7 @@ var services = [
         "id": 2,
         "name": "Performance Upgrades",
         "value": "performanceUpgrades",
+        "formValue": "Book performance Upgrade",
         "price": 69.99,
         "technicians": [
             {
@@ -28,6 +30,7 @@ var services = [
         "id": 3,
         "name": "Wheel Truing and Alignment",
         "value": "turingAndAlignment",
+        "formValue": "Book Turing And Alignment",
         "price": 19.99,
         "technicians": [
             {
@@ -42,6 +45,7 @@ var services = [
         "id": 4,
         "name": "Seat replacement",
         "value": "seatReplacement",
+        "formValue": "Book Seat Replacement",
         "price": 9.99,
         "technicians": [
             {
@@ -53,6 +57,7 @@ var services = [
         "id": 5,
         "name": "Gear adjustment",
         "value": "gearAdjustment",
+        "formValue": "Book Gear Adjustment",
         "price": 15.99,
         "technicians": [
             {
@@ -64,6 +69,7 @@ var services = [
         "id": 6,
         "name": "Tire and tube change",
         "value": "tireTubeChange",
+        "formValue": "Book Tire and Tube Service",
         "price": 150,
         "technicians": [
             {
@@ -116,7 +122,7 @@ var technicians = [
 var bookings = []
 
 function bookService(value, registrationInfo) {
-    var service = services.find(s => s.value === value);
+    var service = services.find(s => s.formValue === value);
     var found = bookings.find(b => b.time === registrationInfo.time 
         && b.date === registrationInfo.date
         && b.technician === registrationInfo.technician);
@@ -139,7 +145,7 @@ function bookService(value, registrationInfo) {
 }
 
 function getTechniciansByService(value) {
-    var service = services.find(s => s.value === value);
+    var service = services.find(s => s.formValue === value);
 
     if (service) {
         return service.technicians.map(t => technicians.find(tech => tech.id === t.id));

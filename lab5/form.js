@@ -63,8 +63,8 @@ $(document).ready(function() {
   }, "This field cannot contain numbers");
 
   $.validator.addMethod("nochar", function(value, element) {
-    return this.optional(element) || /^([^0-9]*)$/.test(value);
-  }, "This field should only contain numbers");
+    return this.optional(element) || /^\d+$/.test(value);
+  }, "This field cannot contain characters");
 
   $.validator.addMethod("ccNumber", function(value, element) {
     return this.optional(element) || /^\d{16}$/.test(value);
