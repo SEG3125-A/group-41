@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@900&family=Open+Sans&family=Roboto:wght@300&display=swap");
+
+body {
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+
+  width: 100%;
+  height: 100vh;
+  color: rgb(0, 0, 0);
+}
+#title-div {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  height: auto;
+
+  justify-self: center;
+}
+#title {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#form {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background-color: white;
+  padding-left: 1%;
+  padding-right: 10%;
+
+  padding-bottom: 1%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+.questions {
+  font-size: 20px;
+  padding: 20px;
+  font-family: "Roboto";
+}
+
+.textarea {
+  width: 500px;
+  height: 200px;
+}
+
+#submit-button {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background: #fcfcfd;
+  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  height: 48px;
+  padding: 0 32px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: #36395a;
+}
+#button {
+  justify-content: center;
+  display: flex;
+  padding-left: 10%;
+}
+
+.slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  height: 300px;
+  align-items: center;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  .slider {
+    height: 200px;
+  }
+}
+
+#images {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  max-width: 90%;
+  max-height: 90%;
+}
+.main-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+footer {
+  color: rgb(0, 0, 0);
+  height: 10px;
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  justify-content: center;
+}
