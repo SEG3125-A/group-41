@@ -5,23 +5,41 @@
 
 <body>
     <h1>Survey analysis</h1>
-    <h2>Colors</h2>
+    <h2>Names</h2>
     <ul>
     <% for (var i=0; i<results[0].length; i++){ %>
-        <li><%= results[0][i].color %> :  <%= results[0][i].count %></li>
+        <li><%= results[0][i].name %> :  <%= results[0][i].count %></li>
     <% } %>    
     </ul>
-    <h2>Fruits</h2>
+    <h2>Is the website pleasing to look at?</h2>
     <ul>
     <% for (var i=0; i<results[1].length; i++){ %>
-        <li><%= results[1][i].fruit %> :  <%= results[1][i].count %></li>
+        <li><%= results[1][i].rateLooks %> :  <%= results[1][i].count %></li>
     <% } %>    
     </ul>
-    <h2>Animals</h2>
+    <h2>Do you like the color scheme of the site?</h2>
     <ul>
     <% for (var i=0; i<results[2].length; i++){ %>
-        <li><%= results[2][i].animal %> :  <%= results[2][i].count %></li>
+        <li><%= results[2][i].likeScheme %> :  <%= results[2][i].count %></li>
     <% } %>    
+    </ul>
+    <h2>Do you like the way the font are utilized?</h2>
+    <ul>
+    <% for (var i=0; i<results[3].length; i++){ %>
+        <li><%= results[3][i].likeFonts %> :  <%= results[3][i].count %></li>
+    <% } %>
+    </ul>
+    <h2>What improvements?</h2>
+    <ul>
+    <% for (var i=0; i<results[4].length; i++){ %>
+        <li><%= results[4][i].improvements %> :  <%= results[4][i].count %></li>
+    <% } %>
+    </ul>
+    <h2>Any comments</h2>
+    <ul>
+    <% for (var i=0; i<results[5].length; i++){ %>
+        <li><%= results[5][i].comments %> :  <%= results[5][i].count %></li>
+    <% } %>
     </ul>
 </body>
 </html>

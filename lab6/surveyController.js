@@ -5,6 +5,11 @@ var fs = require('fs');
 
 // read the data file
 function readData(fileName){
+    // If the file does not exist, create it
+    if (!fs.existsSync('./data/' + fileName + '.json')){
+        fs.writeFileSync('./data/' + fileName + '.json', '[]');
+    }
+
     let dataRead = fs.readFileSync('./data/' + fileName + '.json');
     let infoRead = JSON.parse(dataRead);
     return infoRead;
@@ -41,12 +46,22 @@ module.exports = function(app){
 
     // when a user goes to localhost:3000/analysis
     // serve a template (ejs file) which will include the data from the data files
+    // app.get('/analysis', function(req, res){
+    //     var color = readData("color");
+    //     var fruit = readData("fruit");
+    //     var animal = readData("animal");
+    //     res.render('showResults', {results: [color, fruit, animal]});
+    //     console.log([color, fruit, animal]);
+    // });
     app.get('/analysis', function(req, res){
-        var color = readData("color");
-        var fruit = readData("fruit");
-        var animal = readData("animal");
-        res.render('showResults', {results: [color, fruit, animal]});
-        console.log([color, fruit, animal]);
+        var name = readData("name");
+        var rateLooks = readData("rateLooks");
+        var likeScheme = readData("likeScheme");
+        var likeFonts = readData("likeFonts");
+        var improvements = readData("improvements");
+        var comments = readData("comments");
+        res.render('showResults', {results: [name, rateLooks, likeScheme, likeFonts, improvements, comments]});
+        console.log([name, rateLooks, likeScheme, likeFonts, improvements, comments]);
     });
 
     // when a user goes to localhost:3000/niceSurvey
@@ -63,11 +78,13 @@ module.exports = function(app){
         var json = req.body;
         for (var key in json){
             console.log(key + ": " + json[key]);
-            // in the case of checkboxes, the user might check more than one
-            if ((key === "color") && (json[key].length === 2)){
-                for (var item in json[key]){
-                    combineCounts(key, json[key][item]);
-                }
+            if (key === "improvements") {
+                var improvements = Array.isArray(json[key]) ? json[key] : [json[key]];
+                console.log(improvements.length);
+            
+                improvements.forEach(function(item) {
+                    combineCounts(key, item);
+                });
             }
             else {
                 combineCounts(key, json[key]);
