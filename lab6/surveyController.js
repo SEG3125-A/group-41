@@ -80,7 +80,6 @@ module.exports = function(app){
             console.log(key + ": " + json[key]);
             if (key === "improvements") {
                 var improvements = Array.isArray(json[key]) ? json[key] : [json[key]];
-                console.log(improvements.length);
             
                 improvements.forEach(function(item) {
                     combineCounts(key, item);
