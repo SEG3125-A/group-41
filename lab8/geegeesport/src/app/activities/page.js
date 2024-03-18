@@ -24,7 +24,12 @@ export default function Home() {
                     name="time"
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                   >
-                    <option>0:00 - 0:00</option>
+                    <option>0:00 - 1:00</option>
+                    <option>1:00 - 2:00</option>
+                    <option>2:00 - 3:00</option>
+                    <option>3:00 - 4:00</option>
+                    <option>4:00 - 5:00</option>
+
                     {/* Add additional time options here */}
                   </select>
                 </div>
