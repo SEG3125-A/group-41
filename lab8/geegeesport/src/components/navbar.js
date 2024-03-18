@@ -12,7 +12,7 @@ export default function NavBar() {
     setIsChecked(!isChecked);
   };
   return (
-    <nav className="absolute z-10 w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
+    <nav className=" w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
       <ul className=" flex flex-row items-center ">
         <div className="flex  space-x-10 items-center flex-row">
           {/* Navigation Links */}
@@ -61,6 +61,9 @@ export default function NavBar() {
             </a>
           </li>
         </div>
+        <div className="flex justify-center w-full">
+          <img src="./images/geegee_logo.png" width={"48px"} />
+        </div>
         {/* Right-aligned items */}
         <li className="flex flex-row items-center justify-end w-full space-x-4">
           <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none mr-10 items-center">
@@ -82,15 +85,18 @@ export default function NavBar() {
                 }`}
               ></span>
             </span>
-            <span className="label flex items-center text-sm font-medium text-black">
+            <span className="label flex items-center text-md font-medium text-black">
               {" "}
               <span className="pl-1"> {isChecked ? "French" : "English"} </span>
             </span>
           </label>
           <div className="flex items-center space-x-2">
             <a className="bg-slate-200 p-2 pl-3 pr-3 rounded-full">Sign Up</a>
-            <a className="bg-red-800 p-2 pl-3 pr-3 rounded-full text-white">
-              Login Up
+            <a
+              href="/login"
+              className="bg-red-800 p-2 pl-3 pr-3 rounded-full text-white"
+            >
+              Login In
             </a>
           </div>
         </li>
