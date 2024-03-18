@@ -13,8 +13,8 @@ export default function NavBar() {
   };
   return (
     <nav className=" w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
-      <ul className=" flex flex-row items-center ">
-        <div className="flex  space-x-10 items-center flex-row">
+      <ul className=" flex flex-row items-center  ">
+        <div className="flex  jusitfy-between items-center w-1/3 flex-row">
           {/* Navigation Links */}
           <li
             className={
@@ -30,8 +30,8 @@ export default function NavBar() {
           <li
             className={
               pathname == "/activities"
-                ? "bg-red-800 text-white  pl-5 pr-5 rounded-xl"
-                : "p-2"
+                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                : "pl-10"
             }
           >
             <a href="/activities">
@@ -42,7 +42,7 @@ export default function NavBar() {
             className={
               pathname == "/facilities"
                 ? "bg-red-800 text-white  pl-5 pr-5 rounded-xl"
-                : "p-2"
+                : "pl-10"
             }
           >
             <a href="/facilities">
@@ -52,21 +52,21 @@ export default function NavBar() {
           <li
             className={
               pathname == "/league-reports"
-                ? "bg-red-800 text-white  pl-5 pr-5 rounded-xl"
-                : "p-2"
+                ? "bg-red-800 text-white  pl-5 pr-5  rounded-xl"
+                : "pl-10 "
             }
           >
             <a href="/league-reports">
-              <p>League Reports</p>
+              <p>League reports</p>
             </a>
           </li>
         </div>
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center w-1/3">
           <img src="./images/geegee_logo.png" width={"48px"} />
         </div>
         {/* Right-aligned items */}
-        <li className="flex flex-row items-center justify-end w-full space-x-4">
-          <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none mr-10 items-center">
+        <li className="flex flex-row items-center justify-end  space-x-4 w-1/3">
+          <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none mr-5 items-center">
             <input
               type="checkbox"
               name="autoSaver"
@@ -90,8 +90,10 @@ export default function NavBar() {
               <span className="pl-1"> {isChecked ? "French" : "English"} </span>
             </span>
           </label>
-          <div className="flex items-center space-x-2">
-            <a className="bg-slate-200 p-2 pl-3 pr-3 rounded-full">Sign Up</a>
+          <div className="flex items-center ">
+            <a className="bg-slate-200 p-2 pl-3 pr-3 mr-5  rounded-full ">
+              Sign Up
+            </a>
             <a
               href="/login"
               className="bg-red-800 p-2 pl-3 pr-3 rounded-full text-white"
