@@ -56,7 +56,7 @@ export default function LogIn() {
                     >
                       Email
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-sm">
+                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
                       <input
                         type="email"
                         id="email"
@@ -79,11 +79,29 @@ export default function LogIn() {
                   <div className="mb-6">
                     <label
                       htmlFor="password"
-                      className="block text-sm font-medium text-gray-700 "
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Phone Number
+                    </label>
+                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
+                      <input
+                        type="password"
+                        id="password"
+                        className="block w-full p-2 sm:text-sm border-gray-300 rounded-md"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="mb-6">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Password
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-md">
+                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
                       <input
                         type="password"
                         id="password"
@@ -95,22 +113,40 @@ export default function LogIn() {
                     </div>
                   </div>
 
+                  <div className="mb-6">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Confirm Password
+                    </label>
+                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
+                      <input
+                        type="password"
+                        id="password"
+                        className="block w-full p-2 sm:text-sm border-gray-300 rounded-md"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
                   <div className="flex items-center justify-between mb-6">
                     <button
                       type="submit"
                       className="w-full py-2 px-4 bg-red-800 text-white rounded hover:bg-red-700 focus:outline-none focus:bg-red-800"
                     >
-                      Log in
+                      Sign Up
                     </button>
                   </div>
                   <div className="text-center">
                     <p className="text-sm">
                       <a
-                        href="/signup"
+                        href="/login"
                         className="text-red-600 hover:text-red-700"
                       >
                         {" "}
-                        Don't have an account? Create an account!
+                        Already have an account? Sign In!
                       </a>
                     </p>
                   </div>
