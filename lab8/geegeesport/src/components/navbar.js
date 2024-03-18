@@ -91,7 +91,10 @@ export default function NavBar() {
             </span>
           </label>
           <div className="flex items-center ">
-            <a className="bg-slate-200 p-2 pl-3 pr-3 mr-5  rounded-full ">
+            <a
+              href="/signup"
+              className="bg-slate-200 p-2 pl-3 pr-3 mr-5  rounded-full "
+            >
               Sign Up
             </a>
             <a
