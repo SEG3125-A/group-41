@@ -1,5 +1,17 @@
+"use client"
 import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, ArcElement, Tooltip, Legend } from 'chart.js';
 
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    LineElement,
+    PointElement,
+    ArcElement,
+    Tooltip,
+    Legend
+);
 const BarChart = () => {
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -29,12 +41,29 @@ const BarChart = () => {
   };
 
   const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Custom Line Chart Title', // Change this to your desired title
+        font: {
+          size: 20
+        }
       },
     },
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'probability'
+        }
+      }],
+    },
   };
+  
 
   return <Bar data={data} options={options} />;
 };
