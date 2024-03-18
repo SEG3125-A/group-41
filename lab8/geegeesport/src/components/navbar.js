@@ -1,13 +1,18 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 export default function NavBar() {
   const router = useRouter();
   const pathname = usePathname();
   console.log(pathname);
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
   return (
-    <nav className="absolute z-10 w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
+    <nav className=" w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
       <ul className=" flex flex-row items-center ">
         <div className="flex  space-x-10 items-center flex-row">
           {/* Navigation Links */}
@@ -56,19 +61,43 @@ export default function NavBar() {
             </a>
           </li>
         </div>
+        <div className="flex justify-center w-full">
+          <img src="./images/geegee_logo.png" width={"48px"} />
+        </div>
         {/* Right-aligned items */}
         <li className="flex flex-row items-center justify-end w-full space-x-4">
-          <button className="bg-white p-2 rounded-full  pr-5">English</button>
-          <div className="flex items-center space-x-2">
-            <span>Aditya Kandel</span>
-            {/* Replace with the correct path to your profile image */}
-            <Image
-              src="/path/to/your/profile/image.jpg"
-              alt="Profile"
-              width={32}
-              height={32}
-              className="rounded-full"
+          <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none mr-10 items-center">
+            <input
+              type="checkbox"
+              name="autoSaver"
+              className="sr-only"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
             />
+            <span
+              className={`slider mr-3 flex h-[26px] w-[50px] items-center rounded-full p-1 duration-200 ${
+                isChecked ? "bg-red-800" : "bg-[#CCCCCE]"
+              }`}
+            >
+              <span
+                className={`dot h-[18px] w-[18px] rounded-full bg-white duration-200 ${
+                  isChecked ? "translate-x-6" : ""
+                }`}
+              ></span>
+            </span>
+            <span className="label flex items-center text-md font-medium text-black">
+              {" "}
+              <span className="pl-1"> {isChecked ? "French" : "English"} </span>
+            </span>
+          </label>
+          <div className="flex items-center space-x-2">
+            <a className="bg-slate-200 p-2 pl-3 pr-3 rounded-full">Sign Up</a>
+            <a
+              href="/login"
+              className="bg-red-800 p-2 pl-3 pr-3 rounded-full text-white"
+            >
+              Login In
+            </a>
           </div>
         </li>
       </ul>
