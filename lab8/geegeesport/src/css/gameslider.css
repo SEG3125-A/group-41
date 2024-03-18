@@ -1,0 +1,96 @@
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+
+  fill: none;
+  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+  stroke: azure;
+}
+
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.mySwiper {
+}
+.imageGameSlide {
+  width: 100%;
+  height: 30vh;
+  /* border-radius: 30%/20%; */
+  object-fit: cover;
+  /* border-width: 5px;
+  border-color: #fffafa; */
+  z-index: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.2s ease-in-out;
+}
+.imageGameSlide:hover {
+  transform: scale(1.09);
+}
+
+.gameWindow {
+  width: auto;
+  height: auto;
+  padding: 2%;
+  background-color: #dcdcdc;
+}
+.swiper-slide-transform {
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); /* this fixes the overflow:hidden in Chrome/Opera */
+}
+
+.swiper-pagination-bullet {
+  color: white !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #fffafa !important;
+}
+
+.mySwiper2 {
+  background-color: rgb(136, 17, 23) !important;
+  /* something new I found */
+  border-radius: 1%/6%;
+  padding: 10px;
+}
+
+.swiper-button-next::after {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.682);
+  border-radius: 10px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-image: url("https://img.icons8.com/ios-filled/50/FFFFFF/chevron-left.png");
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  background-color: rgba(255, 255, 255, 0.503);
+  border-radius: 10%;
+
+  z-index: 10;
+}
+.arrow.arrow-left {
+  left: 10px;
+}
+.arrow.arrow-right {
+  right: 0;
+}
