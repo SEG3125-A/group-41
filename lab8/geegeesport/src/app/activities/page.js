@@ -1,7 +1,16 @@
+"use client";
 import NavBar from "@/components/navbar";
 import Image from "next/image";
+import activities from "@/components/activities";
+import { use, useEffect, useState } from "react";
 
 export default function Home() {
+  const [search, setSearch] = useState('');
+  const [days, setDay] = useState([]);
+  const [time, setTime] = useState(-1);
+  useEffect(() => {console.log(search)}, [search])
+  useEffect(() => {console.log(days)}, [days])
+  useEffect(() => {console.log(time)}, [time])
   return (
     <main className="w-full min-h-screen bg-white">
       <div>
@@ -23,14 +32,12 @@ export default function Home() {
                     id="time"
                     name="time"
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    onChange={e=>setTime(e.target.value)}
                   >
-                    <option>0:00 - 1:00</option>
-                    <option>1:00 - 2:00</option>
-                    <option>2:00 - 3:00</option>
-                    <option>3:00 - 4:00</option>
-                    <option>4:00 - 5:00</option>
-
-                    {/* Add additional time options here */}
+                    <option value="-1" id="-1" >Any</option>
+                    {activities.getTimes().map((time, index) => (
+                      <option key={index} value={index} id={time}>{time}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -40,83 +47,22 @@ export default function Home() {
                     <legend className="text-sm font-medium text-gray-700">Day</legend>
                     {/* List of checkboxes for each day */}
                     <div className="mt-4 space-y-4">
-                      <div className="flex items-center">
-                        <input
-                          id="sunday"
-                          name="day"
-                          type="checkbox"
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                        />
-                        <label htmlFor="sunday" className="ml-2 block text-sm text-gray-900">
-                          Sunday
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          id="monday"
-                          name="day"
-                          type="checkbox"
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                        />
-                        <label htmlFor="monday" className="ml-2 block text-sm text-gray-900">
-                          Monday
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          id="tuesday"
-                          name="day"
-                          type="checkbox"
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                        />
-                        <label htmlFor="tuesday" className="ml-2 block text-sm text-gray-900">
-                          Tuesday
-                        </label>
-                        </div>
-                        <div className="flex items-center">
+                      {activities.getDays().map((day, index) => (
+                       
+                        <div key={index} className="flex items-center">
+                          
                           <input
-                            id="wednesday"
-                            name="day"
+                            id={day}
+                            name={day}
                             type="checkbox"
                             className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                            onChange={e=>setDay(e.target.checked ? [...days, index] : days.filter(d=>d!==index))}
                           />
-                          <label htmlFor="wednesday" className="ml-2 block text-sm text-gray-900">
-                            Wednesday
+                          <label htmlFor={index} className="ml-3 block text-sm font-medium text-gray-700">
+                            {day}
                           </label>
                         </div>
-                        <div className="flex items-center">
-                          <input
-                            id="thursday"
-                            name="day"
-                            type="checkbox"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                          />
-                          <label htmlFor="thursday" className="ml-2 block text-sm text-gray-900">
-                            Thursday
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="friday"
-                            name="day"
-                            type="checkbox"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                          />
-                          <label htmlFor="friday" className="ml-2 block text-sm text-gray-900">
-                            Friday
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="saturday"
-                            name="day"
-                            type="checkbox"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                          />
-                          <label htmlFor="saturday" className="ml-2 block text-sm text-gray-900">
-                            Saturday
-                          </label>
-                        </div>
+                      ))}
                     </div>
                   </fieldset>
                 </div>
@@ -152,169 +98,62 @@ export default function Home() {
                       className="block w-full pl-10 pr-3 py-2 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                       placeholder="Search"
                       type="search"
+                      onChange={e=>setSearch(e.target.value)}
                     />
                   </div>
                 </div>
                 {/* Add activities here, cards and 3 per row */}
                 <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {/* Firt row */}
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/1.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 1</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/2.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 2</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/3.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 3</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  {/* Second row */}
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/1.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 4</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/2.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 5</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/3.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 6</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  {/* Third row */}
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/1.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 7</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/2.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 8</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-48 w-full object-cover"
-                        src="/images/activities/3.jpg"
-                        alt=""
-                        width={384}
-                        height={384}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h2 className="text-lg font-semibold">Activity 9</h2>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  {activities.searchActivities(search, days, time).map((activity, index) => (
+                    <div key={index} className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                      <div className="flex-shrink-0">
+                        <Image
+                          className="h-48 w-full object-cover"
+                          src={`/images/Intramural.jpg`}
+                          alt=""
+                          width={384}
+                          height={384}
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h2 className="text-lg font-semibold">{activity.name}</h2>
+                        <p className="mt-2 text-sm text-gray-500">{activity.description}</p>
+                        {/* Add days and times */}
+                        {/* Replace this with actual content */}
+                        <div className="mt-4">
+                          <p className="text-sm font-semibold">Days</p>
+                          <div className="mt-2 space-x-2">
+                            {activity.days.map((day, index) => (
+                              <span key={index} className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+                                {activities.getDay(day)}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="mt-4">
+                          <p className="text-sm font-semibold">Times</p>
+                          <div className="mt-2 space-x-2">
+                            {activity.times.map((time, index) => (
+                              <span key={index} className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+                                {activities.getTime(time)}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        {/* Book button */}
+                        <div className="mt-4">
+                          <button
+                            type="button"
+                            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          >
+                            Book
+                          </button>
+                        </div>
 
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
