@@ -5,7 +5,6 @@ const Utils = {
       yellow: 'rgb(255, 205, 86)',
       green: 'rgb(75, 192, 192)',
       blue: 'rgb(54, 162, 235)',
-      // ... additional colors if needed
     },
   
     numbers: function(cfg) {
