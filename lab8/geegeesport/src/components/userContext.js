@@ -20,10 +20,12 @@ export const UserProvider = ({ children }) => {
   };
 
   const isLogged = () => {
+    console.log("Checking if user is logged in")
+    console.log(Cookies.get('user'))
     if (Cookies.get('user')) {
-      return user;
+      return true;
     } else {
-      return null;
+      return false;
     }
   }
 

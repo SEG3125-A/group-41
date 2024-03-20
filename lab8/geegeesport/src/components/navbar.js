@@ -94,29 +94,40 @@ export default function NavBar() {
               <span className="pl-1"> {isChecked ? "French" : "English"} </span>
             </span>
           </label>
-    {isLogged() ? (
-      <li className={pathname === "/login" ? "bg-red-800 text-white pl-5 p-4 pr-5 rounded-xl" : "p-2"}>
-        {/* Assuming you have a function to handle logging out */}
-        <a href="/login" onClick={logout()}>
-          <p>Log out</p>
-        </a>
-      </li>
-    ) : (
-      <>
-        <li className={pathname === "/login" ? "bg-red-800 text-white pl-5 p-4 pr-5 rounded-xl" : "p-2"}>
-          <a href="/login">
-            <p>Log in</p>
-          </a>
-        </li>
-        <li className={pathname === "/signup" ? "bg-red-800 text-white pl-5 p-4 pr-5 rounded-xl" : "p-2"}>
-          <a href="/signup">
-            <p>Sign up</p>
-          </a>
-        </li>
-      </>
-    )}
 
         </li>
+        {isLogged() ? (
+          <li
+            className={
+              pathname == "/login"
+                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                : "pl-10"
+            }
+          >
+            <a href="#">
+              <p>Logout</p>
+            </a>
+          </li>
+        ) : (
+          <><li
+              className={pathname == "/login"
+                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                : "pl-10"}
+            >
+              <a href="/login">
+                <p>Login</p>
+              </a>
+            </li><li
+              className={pathname == "/signup"
+                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                : "pl-10"}
+            >
+                <a href="/login">
+                  <p>Register</p>
+                </a>
+              </li></>
+        )}
+
       </ul>
     </nav>
   );
