@@ -6,32 +6,65 @@ import { useState } from "react";
 export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [pwdConfirm, setPwdConfirm] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-  // This would be your form submit handler
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle the login logic here
-    console.log(email, password);
+    if (password !== pwdConfirm) {
+      alert("Passwords do not match");
+      return;
+    }
+    const userData = {
+      email,
+      password,
+      phoneNumber,
+    };
+    //console.log(userData);
+    addUser(userData).then((data) => {
+      console.log(data);
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("User added");
+      }
+    });
   };
+
+  const addUser = async (userData) => {
+    //console.log(JSON.stringify(userData));
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      body: JSON.stringify(userData)
+    });
+  
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+  
+    return response.json();
+  };
+  
   return (
-    <main className="w-full max-h-screen  bg-white">
+    <main className="w-full max-h-screen  bg-white text-black">
       <div className="max-h-screen">
         <div className=" flex flex-row overflow-hidden">
           <div className=" max-h-screen flex flex-col w-full">
             {/**images */}
-            <div class="  p-1 w-1/2  overflow-hidden ">
+            <div className="  p-1 w-1/2  overflow-hidden ">
               <img
                 className="rounded-xl object-fill"
                 src="./images/image2.jpg"
               />
             </div>
-            <div class=" p-1 flex w-full flex-row justify-end     ">
+            <div className=" p-1 flex w-full flex-row justify-end     ">
               <img
                 className="rounded-xl object-fill w-1/2"
                 src="./images/image1.jpeg"
               />
             </div>
-            <div class="  p-5 w-1/2  overflow-hidden">
+            <div className="  p-5 w-1/2  overflow-hidden">
               <img
                 className="rounded-xl object-fill"
                 src="./images/image2.jpg"
@@ -46,7 +79,7 @@ export default function LogIn() {
             <div className="flex items-center justify-center min-h-screen ">
               <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
                 <h1 className="text-2xl text-black font-bold text-center mb-4">
-                  Log In
+                  Sign Up
                 </h1>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
@@ -78,18 +111,18 @@ export default function LogIn() {
                   </div>
                   <div className="mb-6">
                     <label
-                      htmlFor="password"
+                      htmlFor="phoneNumber"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Phone Number
                     </label>
                     <div className="mt-1 relative rounded-md shadow-xl outline-10">
                       <input
-                        type="password"
-                        id="password"
+                        type="phoneNumber"
+                        id="phoneNumber"
                         className="block w-full p-2 sm:text-sm border-gray-300 rounded-md"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                         required
                       />
                     </div>
@@ -115,18 +148,18 @@ export default function LogIn() {
 
                   <div className="mb-6">
                     <label
-                      htmlFor="password"
+                      htmlFor="confirmPassword"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Confirm Password
                     </label>
                     <div className="mt-1 relative rounded-md shadow-xl outline-10">
                       <input
-                        type="password"
-                        id="password"
+                        type="confirmPassword"
+                        id="confirmPassword"
                         className="block w-full p-2 sm:text-sm border-gray-300 rounded-md"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={pwdConfirm}
+                        onChange={(e) => setPwdConfirm(e.target.value)}
                         required
                       />
                     </div>

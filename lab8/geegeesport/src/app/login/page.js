@@ -14,7 +14,7 @@ export default function LogIn() {
     console.log(email, password);
   };
   return (
-    <main className="w-full max-h-screen  bg-white">
+    <main className="w-full max-h-screen  bg-white text-black">
       <div className="max-h-screen">
         <div className=" flex flex-row overflow-hidden">
           <div className=" max-h-screen flex flex-col w-full">
