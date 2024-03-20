@@ -31,10 +31,14 @@ export const UserProvider = ({ children }) => {
     }
   }
 
+  const getUser = () => {
+    return user;
+  }
+
   useEffect(() => {console.log(user,"user value")}, [user]);
 
   return (
-    <UserContext.Provider value={{ user, login, logout, isLogged }}>
+    <UserContext.Provider value={{ user, login, logout, isLogged, getUser }}>
       {children}
     </UserContext.Provider>
   );

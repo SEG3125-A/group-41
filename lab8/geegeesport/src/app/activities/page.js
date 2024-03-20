@@ -3,14 +3,50 @@ import NavBar from "@/components/navbar";
 import Image from "next/image";
 import activities from "@/components/activities";
 import { use, useEffect, useState } from "react";
+import { useUser } from "@/components/userContext";
+
 
 export default function Home() {
   const [search, setSearch] = useState('');
   const [days, setDay] = useState([]);
   const [time, setTime] = useState(-1);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const { isLogged, getUser } = useUser();
   useEffect(() => {console.log(search)}, [search])
   useEffect(() => {console.log(days)}, [days])
   useEffect(() => {console.log(time)}, [time])
+  useEffect(() => {if (isLogged()) {setLoggedIn(true);}}, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(search, days, time);
+
+    bookActivity(e.target.id).then((data) => {
+      console.log(data);
+    });
+  }
+
+  const bookActivity = async (activity_id) => {
+    const bookInfo = {
+      activity_id: activity_id,
+      user_id: getUser()
+    }
+
+    const response = await fetch('/api/book', {
+      method: 'POST',
+      body: JSON.stringify(bookInfo)
+    });
+    console.log(response);
+    if (!response.ok) {
+      alert('Activity already booked');
+      return false;
+    }
+
+    alert('Activity booked successfully');
+    return true;
+  }
+
+
   return (
     <main className="w-full min-h-screen bg-white">
       <div>
@@ -141,14 +177,18 @@ export default function Home() {
                           </div>
                         </div>
                         {/* Book button */}
+                        {loggedIn && (
                         <div className="mt-4">
                           <button
-                            type="button"
-                            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            id={activity.id}
+                            type="submit"
+                            className="w-full py-2 px-4 bg-red-800 text-white rounded hover:bg-red-700 focus:outline-none focus:bg-red-800"
+                            onClick={e=>handleSubmit(e)}
                           >
                             Book
                           </button>
                         </div>
+                        )}
 
                       </div>
                     </div>
