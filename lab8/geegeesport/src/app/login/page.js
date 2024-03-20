@@ -32,14 +32,14 @@ export default function LogIn() {
 
   const checkUser = async (userData) => {
     //console.log(JSON.stringify(userData));
-    const response = await fetch('/api/register', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       body: JSON.stringify(userData)
     });
-  
+    //console.log(response);
     if (!response.ok) {
       if (response.status === 401) {
-        alert('User already exists');
+        alert('User not found or password is incorrect');
         return false;
       }
     }

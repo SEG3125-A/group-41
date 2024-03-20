@@ -8,6 +8,8 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const login = (userData) => {
+    console.log("Storing user data")
+    console.log(userData);
     setUser(userData);
     Cookies.set('user', userData);
   };
