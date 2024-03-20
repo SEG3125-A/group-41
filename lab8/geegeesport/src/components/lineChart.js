@@ -1,6 +1,7 @@
 "use client"
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, ArcElement, Tooltip, Legend } from 'chart.js';
+import Utils from '../components/utils.js';
 
 ChartJS.register(
     CategoryScale,
@@ -14,12 +15,15 @@ ChartJS.register(
 );
 
 const LineChart = () => {
+  const DATA_COUNT = 6;
+  const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+  // Sports Equipment Sales
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: ['Rackets', 'Balls', 'Shoes', 'Jerseys', 'Helmets', 'Gloves'], // Add your labels here
     datasets: [
       {
         label: 'Number of Items Sold',
-        data: [65, 59, 80, 81, 56, 55],
+        data: Utils.numbers(NUMBER_CFG),
         fill: false,
         borderColor: '#36A2EB', // Use one of the colors for the line
         backgroundColor: '#36A2EB', // Use the same color for the points

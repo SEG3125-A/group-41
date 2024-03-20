@@ -28,9 +28,9 @@ export default function Home() {
           <div>
             <div className="bg-gray-50 text-black  pt-4 pl-4">
               {/* Search bar */}
-              <p className="text-center">Search For a Team</p>
+              {/* <p className="text-center">Search For a Team</p> */}
                 {/* Search bar container */}
-                <div className="max-w-lg mx-auto p-4"> {/* Add horizontal padding if necessary */}
+                {/* <div className="max-w-lg mx-auto p-4">
                   <div className="mt-4 relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <svg
@@ -55,27 +55,27 @@ export default function Home() {
                       type="search"
                     />
                   </div>
-                </div>
+                </div> */}
 
                 {/* Adding the charts */}
-                <div className="flex flex-col justify-center items-center space-y-4 py-4"> {/* Add vertical padding and space between items */}
-                  <div className="w-full max-w-lg"> {/* Constrain the width of the PieChart and center it */}
+                <div className="flex flex-col justify-center items-center space-y-4 py-4">
+                  <div className="w-full max-w-lg">
                     <div className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center">
-                      <h2 className="text-center text-lg font-bold mb-4">Pie Chart</h2> {/* Add bottom margin for spacing */}
+                      <h2 className="text-center text-lg font-bold mb-4">Teams with the most wins</h2>
                       <PieChart options={options}></PieChart>
                     </div>
                   </div>
 
-                  <div className="w-full max-w-lg"> {/* Constrain the width of the BarChart and center it */}
+                  <div className="w-full max-w-lg">
                     <div className="bg-white p-4 rounded-lg shadow-md">
-                      <h2 className="text-center text-lg font-bold mb-4">Bar Chart</h2> {/* Add bottom margin for spacing */}
+                      <h2 className="text-center text-lg font-bold mb-4">Most popular sports</h2>
                       <BarChart></BarChart>
                     </div>
                   </div>
 
-                  <div className="w-full max-w-lg"> {/* Constrain the width of the LineChart and center it */}
+                  <div className="w-full max-w-lg">
                     <div className="bg-white p-4 rounded-lg shadow-md">
-                      <h2 className="text-center text-lg font-bold mb-4">Line Chart</h2> {/* Add bottom margin for spacing */}
+                      <h2 className="text-center text-lg font-bold mb-4">Sports Equipment Sales</h2>
                       <LineChart></LineChart>
                     </div>
                   </div>

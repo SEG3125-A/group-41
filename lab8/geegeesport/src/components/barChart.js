@@ -1,6 +1,7 @@
 "use client"
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, ArcElement, Tooltip, Legend } from 'chart.js';
+import Utils from '../components/utils.js';
 
 ChartJS.register(
     CategoryScale,
@@ -13,12 +14,15 @@ ChartJS.register(
     Legend
 );
 const BarChart = () => {
+  const DATA_COUNT = 6;
+  const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: ['Basketball', 'Football', 'Soccer', 'Volleyball', 'Tennis', 'Badminton'],
     datasets: [
       {
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Number of Players',
+        data: Utils.numbers(NUMBER_CFG),
         backgroundColor: [
           '#FF6384',
           '#36A2EB',
