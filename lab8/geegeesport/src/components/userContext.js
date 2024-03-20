@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 const UserContext = createContext(null);
@@ -10,8 +10,8 @@ export const UserProvider = ({ children }) => {
   const login = (userData) => {
     console.log("Storing user data")
     console.log(userData);
-    setUser(userData);
-    Cookies.set('user', "uswe2");
+    setUser(userData.email);
+    Cookies.set('user', userData.email);
   };
 
   const logout = () => {
@@ -30,6 +30,8 @@ export const UserProvider = ({ children }) => {
       return false;
     }
   }
+
+  useEffect(() => {console.log(user,"user value")}, [user]);
 
   return (
     <UserContext.Provider value={{ user, login, logout, isLogged }}>
