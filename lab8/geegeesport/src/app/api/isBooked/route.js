@@ -10,14 +10,19 @@ export async function POST(request) {
 
     const newUser = await request.json();
     console.log(newUser);
+    //console.log("test")
     await db.run('CREATE TABLE IF NOT EXISTS bookings (user_id TEXT PRIMARY KEY, activity_id INTEGER NOT NULL UNIQUE)');
 
+    // Check if user has already booked the activity
+    const user = await db.get('SELECT * FROM bookings WHERE user_id = ? AND activity_id = ?', [newUser.user_id, newUser.activity_id]);
+    if (user) {
+      console.log("Activity already booked");
+      await db.close();
+      return new Response(JSON.stringify({ message: "Activity already booked", booked: true }), { status: 201 });
+    }
 
-    await db.run('INSERT INTO bookings (user_id, activity_id) VALUES (?, ?)', [newUser.user_id, newUser.activity_id]);
-
-    await db.close();
-
-    return new Response(JSON.stringify({ message: "Booked activity successfully" }), { status: 201 });
+    return new Response(JSON.stringify({ message: "Activity not booked", booked: false }), { status: 201 });
+    
   } catch (error) {
     console.log(error);
     return new Response(JSON.stringify({ message: "Activity already booked" }), { status: 400 });

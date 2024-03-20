@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function NavBar() {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
+  // console.log(pathname);
   const [isChecked, setIsChecked] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const handleCheckboxChange = () => {

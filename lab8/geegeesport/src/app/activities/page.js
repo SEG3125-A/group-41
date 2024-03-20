@@ -2,9 +2,9 @@
 import NavBar from "@/components/navbar";
 import Image from "next/image";
 import activities from "@/components/activities";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@/components/userContext";
-
+import Activity  from "@/components/activity";
 
 export default function Home() {
   const [search, setSearch] = useState('');
@@ -12,39 +12,12 @@ export default function Home() {
   const [time, setTime] = useState(-1);
   const [loggedIn, setLoggedIn] = useState(false);
   const { isLogged, getUser } = useUser();
-  useEffect(() => {console.log(search)}, [search])
-  useEffect(() => {console.log(days)}, [days])
-  useEffect(() => {console.log(time)}, [time])
+  const [user_id, setUser] = useState(null);
+  // useEffect(() => {console.log(search)}, [search])
+  // useEffect(() => {console.log(days)}, [days])
+  // useEffect(() => {console.log(time)}, [time])
   useEffect(() => {if (isLogged()) {setLoggedIn(true);}}, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(search, days, time);
-
-    bookActivity(e.target.id).then((data) => {
-      console.log(data);
-    });
-  }
-
-  const bookActivity = async (activity_id) => {
-    const bookInfo = {
-      activity_id: activity_id,
-      user_id: getUser()
-    }
-
-    const response = await fetch('/api/book', {
-      method: 'POST',
-      body: JSON.stringify(bookInfo)
-    });
-    console.log(response);
-    if (!response.ok) {
-      alert('Activity already booked');
-      return false;
-    }
-
-    alert('Activity booked successfully');
-    return true;
-  }
+  useEffect(() => {var user = getUser(); if (user) {setUser(user); console.log(user)} }, [loggedIn]);
 
 
   return (
@@ -177,18 +150,23 @@ export default function Home() {
                           </div>
                         </div>
                         {/* Book button */}
-                        {loggedIn && (
-                        <div className="mt-4">
-                          <button
-                            id={activity.id}
-                            type="submit"
-                            className="w-full py-2 px-4 bg-red-800 text-white rounded hover:bg-red-700 focus:outline-none focus:bg-red-800"
-                            onClick={e=>handleSubmit(e)}
-                          >
-                            Book
-                          </button>
+                        {/* {isAlreadyBooked(activity.id) && (
+                          <div className="mt-4">
+                            <button
+                              type="submit"
+                              className="w-full py-2 px-4 bg-red-800 text-white rounded hover:bg-red-700 focus:outline-none focus:bg-red-800"
+                              disabled
+                            >
+                              Booked
+                            </button>
                         </div>
-                        )}
+                      )} */}
+                      {user_id &&
+                        <Activity activity_id={activity.id} user_id={user_id} />
+                      }
+                      {!loggedIn && 
+                        <Activity activity_id={activity.id} />
+                      }
 
                       </div>
                     </div>

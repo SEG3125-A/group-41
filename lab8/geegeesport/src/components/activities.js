@@ -41,9 +41,6 @@ const activities = {
         return this.TIMES;
     },
     searchActivities: function(name, days, time) {
-        console.log("searchActivities", name, days, time);
-        console.log(name, days, time);
-        
         if (name === "") {
             name = null;
         }
