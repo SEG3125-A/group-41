@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { use, useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/components/userContext";
+
 
 import Link from "next/link";
 export default function NavBar() {
@@ -10,10 +11,22 @@ export default function NavBar() {
   const pathname = usePathname();
   console.log(pathname);
   const [isChecked, setIsChecked] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
   const { isLogged, logout } = useUser();
+  useEffect(() => {
+    if (isLogged()) {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+    setLoggedIn(false);
+  }
+  
 
   return (
     <nav className=" w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
@@ -96,7 +109,7 @@ export default function NavBar() {
           </label>
 
         </li>
-        {isLogged() ? (
+        {loggedIn && (
           <li
             className={
               pathname == "/login"
@@ -104,29 +117,35 @@ export default function NavBar() {
                 : "pl-10"
             }
           >
-            <a href="#">
-              <p>Logout</p>
-            </a>
+            <a href="#" onClick={e=>{handleLogout()}}>Logout</a>
           </li>
-        ) : (
-          <><li
-              className={pathname == "/login"
-                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
-                : "pl-10"}
-            >
-              <a href="/login">
-                <p>Login</p>
-              </a>
-            </li><li
-              className={pathname == "/signup"
-                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
-                : "pl-10"}
-            >
-                <a href="/login">
-                  <p>Register</p>
-                </a>
-              </li></>
         )}
+        {!loggedIn && (
+        <li
+          className={
+            pathname == "/login"
+              ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+              : "pl-10"
+          }
+        >
+          <a href="/login">
+            <p>Login</p>
+          </a>
+        </li>
+      )}
+      {!loggedIn && (
+            <li
+              className={
+                pathname == "/register"
+                  ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                  : "pl-10"
+              }
+            >
+              <a href="/register">
+                Register
+              </a>
+            </li>
+      )}
 
       </ul>
     </nav>

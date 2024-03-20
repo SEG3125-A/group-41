@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
     console.log("Storing user data")
     console.log(userData);
     setUser(userData);
-    Cookies.set('user', userData);
+    Cookies.set('user', "uswe2");
   };
 
   const logout = () => {
@@ -22,6 +22,8 @@ export const UserProvider = ({ children }) => {
   const isLogged = () => {
     console.log("Checking if user is logged in")
     console.log(Cookies.get('user'))
+    setUser(Cookies.get('user'));
+    console.log(user)
     if (Cookies.get('user')) {
       return true;
     } else {

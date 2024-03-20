@@ -24,6 +24,7 @@ export default function LogIn() {
     checkUser(userData).then((data) => {
       console.log(data);
       if (data) {
+        console.log("User exists");
         login(userData);
         push('/');
       }
