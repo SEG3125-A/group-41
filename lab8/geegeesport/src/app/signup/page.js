@@ -2,12 +2,14 @@
 import NavBar from "@/components/navbar";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter  } from 'next/navigation'
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pwdConfirm, setPwdConfirm] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const { push } = useRouter();
 
 
   const handleSubmit = (e) => {
@@ -27,7 +29,7 @@ export default function LogIn() {
       if (data.error) {
         alert(data.error);
       } else {
-        alert("User added");
+        push("/login");
       }
     });
   };

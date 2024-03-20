@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useUser } from "@/components/userContext";
+
 import Link from "next/link";
 export default function NavBar() {
   const router = useRouter();
@@ -11,6 +13,8 @@ export default function NavBar() {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+  const { isLogged, logout } = useUser();
+
   return (
     <nav className=" w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
       <ul className=" flex flex-row items-center  ">
@@ -90,20 +94,45 @@ export default function NavBar() {
               <span className="pl-1"> {isChecked ? "French" : "English"} </span>
             </span>
           </label>
-          <div className="flex items-center ">
-            <a
-              href="/signup"
-              className="bg-slate-200 p-2 pl-3 pr-3 mr-5  rounded-full "
+          {isLogged() ? (
+            <li
+              className={
+                pathname == "/login"
+                  ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                  : "p-2"
+              }
             >
-              Sign Up
-            </a>
-            <a
-              href="/login"
-              className="bg-red-800 p-2 pl-3 pr-3 rounded-full text-white"
+              <a href="/login" >
+                <p>Log out</p>
+              </a>
+            </li>
+          ) : (
+            <li
+              className={
+                pathname == "/login"
+                  ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                  : "p-2"
+              }
             >
-              Login In
-            </a>
-          </div>
+              <a href="/login">
+                <p>Log in</p>
+              </a>
+            </li>
+          )}
+          {!isLogged() && (
+            <li
+              className={
+                pathname == "/signup"
+                  ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                  : "p-2"
+              }
+            >
+              <a href="/signup">
+                <p>Sign up</p>
+              </a>
+            </li>
+          )}
+
         </li>
       </ul>
     </nav>

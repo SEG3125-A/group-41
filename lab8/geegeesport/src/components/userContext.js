@@ -10,7 +10,6 @@ export const UserProvider = ({ children }) => {
   const login = (userData) => {
     setUser(userData);
     Cookies.set('user', userData);
-    
   };
 
   const logout = () => {
@@ -18,8 +17,16 @@ export const UserProvider = ({ children }) => {
     Cookies.remove('user');
   };
 
+  const isLogged = () => {
+    if (Cookies.get('user')) {
+      return user;
+    } else {
+      return null;
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout, isLogged }}>
       {children}
     </UserContext.Provider>
   );

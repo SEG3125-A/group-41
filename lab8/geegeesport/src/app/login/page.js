@@ -1,37 +1,71 @@
 "use client";
 import NavBar from "@/components/navbar";
 import Image from "next/image";
-import { useState } from "react";
+import { use, useState } from "react";
+import { useUser } from "@/components/userContext";
+import { useRouter  } from 'next/navigation'
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useUser();
+  const { push } = useRouter();
 
   // This would be your form submit handler
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle the login logic here
     console.log(email, password);
+    const userData = {
+      email,
+      password
+    };
+
+    checkUser(userData).then((data) => {
+      console.log(data);
+      if (data) {
+        login(userData);
+        push('/');
+      }
+    });
   };
+
+  const checkUser = async (userData) => {
+    //console.log(JSON.stringify(userData));
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      body: JSON.stringify(userData)
+    });
+  
+    if (!response.ok) {
+      if (response.status === 401) {
+        alert('User already exists');
+        return false;
+      }
+    }
+  
+    return true;
+  }
+
   return (
     <main className="w-full max-h-screen  bg-white text-black">
       <div className="max-h-screen">
         <div className=" flex flex-row overflow-hidden">
           <div className=" max-h-screen flex flex-col w-full">
             {/**images */}
-            <div class="  p-1 w-1/2  overflow-hidden ">
+            <div className="  p-1 w-1/2  overflow-hidden ">
               <img
                 className="rounded-xl object-fill"
                 src="./images/image2.jpg"
               />
             </div>
-            <div class=" p-1 flex w-full flex-row justify-end     ">
+            <div className=" p-1 flex w-full flex-row justify-end     ">
               <img
                 className="rounded-xl object-fill w-1/2"
                 src="./images/image1.jpeg"
               />
             </div>
-            <div class="  p-5 w-1/2  overflow-hidden">
+            <div className="  p-5 w-1/2  overflow-hidden">
               <img
                 className="rounded-xl object-fill"
                 src="./images/image2.jpg"
