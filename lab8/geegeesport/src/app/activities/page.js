@@ -11,11 +11,21 @@ export default function Home() {
   const [days, setDay] = useState([]);
   const [time, setTime] = useState(-1);
   const [loggedIn, setLoggedIn] = useState(false);
-  const { isLogged, getUser } = useUser();
+  const { isLogged, getUser, getLang } = useUser();
   const [user_id, setUser] = useState(null);
   // useEffect(() => {console.log(search)}, [search])
   // useEffect(() => {console.log(days)}, [days])
   // useEffect(() => {console.log(time)}, [time])
+  const [language, setLanguage] = useState("");
+
+  useEffect(() => {
+    if (getLang() === "french") {
+      setLanguage("french");
+    } else {
+      setLanguage("english");
+    }
+  }, []);
+
   useEffect(() => {
     if (isLogged()) {
       setLoggedIn(true);
@@ -40,14 +50,19 @@ export default function Home() {
             {/* Filters section */}
             <div className="flex justify-between">
               <div>
-                <h2 className="text-lg font-semibold">Filters</h2>
+                <h2 className="text-lg font-semibold">
+                  {" "}
+                  {language == "french" && "Filtres"}
+                  {language == "english" && "Filters"}
+                </h2>
                 {/* Time Filter */}
                 <div className="mt-4">
                   <label
                     htmlFor="time"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Time
+                    {language == "french" && "Temps"}
+                    {language == "english" && "Time"}
                   </label>
                   <select
                     id="time"
@@ -70,11 +85,12 @@ export default function Home() {
                 <div className="mt-4">
                   <fieldset>
                     <legend className="text-sm font-medium text-gray-700">
-                      Day
+                      {language == "french" && "JOURS"}
+                      {language == "english" && "Days"}
                     </legend>
                     {/* List of checkboxes for each day */}
                     <div className="mt-4 space-y-4">
-                      {activities.getDays().map((day, index) => (
+                      {activities.getDays(language).map((day, index) => (
                         <div key={index} className="flex items-center">
                           <input
                             id={day}
@@ -105,12 +121,15 @@ export default function Home() {
               <div className="flex-1 p-4">
                 {/* Replace this with actual content */}
                 <p className="text-center">
-                  Search for your favorite Activities
+                  {language == "french" && "Recherchez vos activités préférées"}
+                  {language == "english" &&
+                    "Search for your favorite Activities"}
                 </p>
                 {/* Add search bar */}
                 <div className="mt-4">
                   <label htmlFor="search" className="sr-only">
-                    Search
+                    {language == "french" && "recherchez"}
+                    {language == "english" && "search"}
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -141,7 +160,7 @@ export default function Home() {
                 {/* Add activities here, cards and 3 per row */}
                 <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {activities
-                    .searchActivities(search, days, time)
+                    .searchActivities(search, days, time, language)
                     .map((activity, index) => (
                       <div
                         key={index}
@@ -173,7 +192,7 @@ export default function Home() {
                                   key={index}
                                   className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
                                 >
-                                  {activities.getDay(day)}
+                                  {activities.getDay(day, language)}
                                 </span>
                               ))}
                             </div>
