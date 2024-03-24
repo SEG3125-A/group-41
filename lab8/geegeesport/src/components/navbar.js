@@ -1,19 +1,39 @@
 "use client";
 import Image from "next/image";
-import { use, useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/components/userContext";
-
 
 import Link from "next/link";
 export default function NavBar() {
   const router = useRouter();
   const pathname = usePathname();
   // console.log(pathname);
-  const [isChecked, setIsChecked] = useState(false);
+  const { getLang, setLang } = useUser();
   const [loggedIn, setLoggedIn] = useState(false);
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+  const [isChecked, setIsChecked] = useState(false);
+  // console.log("check state", getLang());
+
+  useEffect(() => {
+    if (getLang() == "french") {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
+    }
+  });
+  const handleCheckboxChange = (event) => {
+    console.log("setting check box to: ", event.target.checked);
+    if (event.target.checked) {
+      setLang("french");
+    } else {
+      setLang("english");
+    }
+    if (getLang() == "french") {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
+    }
+    location.reload();
   };
   const { isLogged, logout } = useUser();
   useEffect(() => {
@@ -25,8 +45,11 @@ export default function NavBar() {
   const handleLogout = () => {
     logout();
     setLoggedIn(false);
-  }
-  
+  };
+
+  const hangleLang = () => {
+    setLang("french");
+  };
 
   return (
     <nav className=" w-full text-red-800 font-bold bg-slate-100  rounded   p-5 items-center">
@@ -48,29 +71,19 @@ export default function NavBar() {
             className={
               pathname == "/activities"
                 ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
-                : "pl-10"
+                : "ml-5 mr-5"
             }
           >
             <a href="/activities">
               <p>Activities</p>
             </a>
           </li>
-          <li
-            className={
-              pathname == "/facilities"
-                ? "bg-red-800 text-white  pl-5 pr-5 rounded-xl"
-                : "pl-10"
-            }
-          >
-            <a href="/facilities">
-              <p>Facilities</p>
-            </a>
-          </li>
+
           <li
             className={
               pathname == "/league-reports"
-                ? "bg-red-800 text-white  pl-5 pr-5  rounded-xl"
-                : "pl-10 "
+                ? "bg-red-800 text-white   pl-5 p-4 pr-5  rounded-xl"
+                : "ml-5"
             }
           >
             <a href="/league-reports">
@@ -89,7 +102,7 @@ export default function NavBar() {
               name="autoSaver"
               className="sr-only"
               checked={isChecked}
-              onChange={handleCheckboxChange}
+              onChange={(e) => handleCheckboxChange(e)}
             />
             <span
               className={`slider mr-3 flex h-[26px] w-[50px] items-center rounded-full p-1 duration-200 ${
@@ -107,7 +120,6 @@ export default function NavBar() {
               <span className="pl-1"> {isChecked ? "French" : "English"} </span>
             </span>
           </label>
-
         </li>
         {loggedIn && (
           <li
@@ -117,36 +129,40 @@ export default function NavBar() {
                 : "pl-10"
             }
           >
-            <a href="#" onClick={e=>{handleLogout()}}>Logout</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                handleLogout();
+              }}
+            >
+              Logout
+            </a>
           </li>
         )}
         {!loggedIn && (
-        <li
-          className={
-            pathname == "/login"
-              ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
-              : "pl-10"
-          }
-        >
-          <a href="/login">
-            <p>Login</p>
-          </a>
-        </li>
-      )}
-      {!loggedIn && (
-            <li
-              className={
-                pathname == "/register"
-                  ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
-                  : "pl-10"
-              }
-            >
-              <a href="/register">
-                Register
-              </a>
-            </li>
-      )}
-
+          <li
+            className={
+              pathname == "/login"
+                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                : "pl-10"
+            }
+          >
+            <a href="/login">
+              <p>Login</p>
+            </a>
+          </li>
+        )}
+        {!loggedIn && (
+          <li
+            className={
+              pathname == "/register"
+                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                : "pl-10"
+            }
+          >
+            <a href="/register">Register</a>
+          </li>
+        )}
       </ul>
     </nav>
   );

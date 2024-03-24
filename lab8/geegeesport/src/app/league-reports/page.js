@@ -1,3 +1,4 @@
+"use client";
 import NavBar from "@/components/navbar";
 import Image from "next/image";
 import PieChart from "@/components/pieChart";
@@ -5,32 +6,32 @@ import BarChart from "@/components/barChart";
 import LineChart from "@/components/lineChart";
 
 export default function Home() {
-    const options = {
-      maintainAspectRatio: true,
-      aspectRatio: 1, // Adjust this value as needed to change the chart size
-      plugins: {
-        legend: {
-          position: 'top', // or 'bottom' if you prefer
-        },
-        title: {
-          display: true,
-          text: 'Pie Chart',
-        },
+  const options = {
+    maintainAspectRatio: true,
+    aspectRatio: 1, // Adjust this value as needed to change the chart size
+    plugins: {
+      legend: {
+        position: "top", // or 'bottom' if you prefer
       },
-      // other options
-    };
-    return (
-      <main className="w-full min-h-screen bg-white">
+      title: {
+        display: true,
+        text: "Pie Chart",
+      },
+    },
+    // other options
+  };
+  return (
+    <main className="w-full min-h-screen bg-white">
+      <div>
         <div>
-          <div>
-            <NavBar></NavBar>
-          </div>
-          <div>
-            <div className="bg-gray-50 text-black  pt-4 pl-4">
-              {/* Search bar */}
-              {/* <p className="text-center">Search For a Team</p> */}
-                {/* Search bar container */}
-                {/* <div className="max-w-lg mx-auto p-4">
+          <NavBar></NavBar>
+        </div>
+        <div>
+          <div className="bg-gray-50 text-black  pt-4 pl-4">
+            {/* Search bar */}
+            {/* <p className="text-center">Search For a Team</p> */}
+            {/* Search bar container */}
+            {/* <div className="max-w-lg mx-auto p-4">
                   <div className="mt-4 relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <svg
@@ -57,33 +58,38 @@ export default function Home() {
                   </div>
                 </div> */}
 
-                {/* Adding the charts */}
-                <div className="flex flex-col justify-center items-center space-y-4 py-4">
-                  <div className="w-full max-w-lg">
-                    <div className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center">
-                      <h2 className="text-center text-lg font-bold mb-4">Teams with the most wins</h2>
-                      <PieChart options={options}></PieChart>
-                    </div>
-                  </div>
-
-                  <div className="w-full max-w-lg">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <h2 className="text-center text-lg font-bold mb-4">Most popular sports</h2>
-                      <BarChart></BarChart>
-                    </div>
-                  </div>
-
-                  <div className="w-full max-w-lg">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <h2 className="text-center text-lg font-bold mb-4">Sports Equipment Sales</h2>
-                      <LineChart></LineChart>
-                    </div>
-                  </div>
+            {/* Adding the charts */}
+            <div className="flex flex-col justify-center items-center space-y-4 py-4">
+              <div className="w-full max-w-lg">
+                <div className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center">
+                  <h2 className="text-center text-lg font-bold mb-4">
+                    Teams with the most wins
+                  </h2>
+                  <PieChart options={options}></PieChart>
                 </div>
+              </div>
 
+              <div className="w-full max-w-lg">
+                <div className="bg-white p-4 rounded-lg shadow-md">
+                  <h2 className="text-center text-lg font-bold mb-4">
+                    Most popular sports
+                  </h2>
+                  <BarChart></BarChart>
+                </div>
+              </div>
+
+              <div className="w-full max-w-lg">
+                <div className="bg-white p-4 rounded-lg shadow-md">
+                  <h2 className="text-center text-lg font-bold mb-4">
+                    Sports Equipment Sales
+                  </h2>
+                  <LineChart></LineChart>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </main>
-    );
+      </div>
+    </main>
+  );
 }

@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "@/components/userContext";
+import { CheckboxProvider } from "@/context/checkboxcontext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,10 +12,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <UserProvider>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </UserProvider>
+    <CheckboxProvider>
+      <UserProvider>
+        <html lang="en">
+          <body className={inter.className}>{children}</body>
+        </html>
+      </UserProvider>
+    </CheckboxProvider>
   );
 }
