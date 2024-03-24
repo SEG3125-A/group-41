@@ -250,6 +250,12 @@ const activities = {
 
     return filteredActivities;
   },
+  getUserBookings: function (activities) {
+    // Activities looks like this [ { activity_id: 0 } ]
+    return this.ACTIVITIES.filter((activity) =>
+      activities.some((a) => a.activity_id === activity.id)
+    );
+  },
 };
 
 export default activities;
