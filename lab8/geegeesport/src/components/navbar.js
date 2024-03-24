@@ -25,6 +25,7 @@ export default function NavBar() {
   const handleLogout = () => {
     logout();
     setLoggedIn(false);
+    window.location.reload();
   }
   
 

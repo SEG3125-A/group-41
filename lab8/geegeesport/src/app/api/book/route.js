@@ -10,7 +10,7 @@ export async function POST(request) {
 
     const newUser = await request.json();
     console.log(newUser);
-    await db.run('CREATE TABLE IF NOT EXISTS bookings (user_id TEXT PRIMARY KEY, activity_id INTEGER NOT NULL UNIQUE)');
+    await db.run('CREATE TABLE IF NOT EXISTS bookings (user_id TEXT, activity_id INTEGER, PRIMARY KEY (user_id, activity_id));');
 
 
     await db.run('INSERT INTO bookings (user_id, activity_id) VALUES (?, ?)', [newUser.user_id, newUser.activity_id]);
