@@ -45,10 +45,7 @@ export default function NavBar() {
   const handleLogout = () => {
     logout();
     setLoggedIn(false);
-  };
-
-  const hangleLang = () => {
-    setLang("french");
+    window.location.reload();
   };
 
   return (

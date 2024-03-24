@@ -13,36 +13,40 @@ const Activity = ({ activity_id, user_id }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(search, days, time);
-
-    bookActivity(e.target.id).then((data) => {
-      console.log(data);
+    // console.log(search, days, time);
+    //console.log(user_id);
+    bookActivity().then((data) => {
+     // console.log(data);
     });
   }
 
-  const bookActivity = async (activity_id) => {
+  const bookActivity = async () => {
+    //console.log('Booking activity:', activity_id);
+    //console.log('User id:', user_id);
     const bookInfo = {
       activity_id: activity_id,
-      user_id: getUser()
+      user_id:user_id
     }
 
     const response = await fetch('/api/book', {
       method: 'POST',
       body: JSON.stringify(bookInfo)
     });
-    console.log(response);
+    //console.log(response);
     if (!response.ok) {
       alert('Activity already booked');
       return false;
     }
 
     alert('Activity booked successfully');
+    // reload the page to update the booking status
+    window.location.reload();
     return true;
   }
 
   useEffect(() => {
     const checkIfActivityIsBooked = async () => {
-    console.log('Checking if activity is booked');
+    //console.log('Checking if activity is booked');
 
       setIsLoading(true);
       try {
