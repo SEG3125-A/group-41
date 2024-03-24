@@ -3,7 +3,7 @@ import NavBar from "@/components/navbar";
 import Image from "next/image";
 import { use, useState } from "react";
 import { useUser } from "@/components/userContext";
-import { useRouter  } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ export default function LogIn() {
     console.log(email, password);
     const userData = {
       email,
-      password
+      password,
     };
 
     checkUser(userData).then((data) => {
@@ -26,27 +26,27 @@ export default function LogIn() {
       if (data) {
         console.log("User exists");
         login(userData);
-        push('/');
+        push("/");
       }
     });
   };
 
   const checkUser = async (userData) => {
     //console.log(JSON.stringify(userData));
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      body: JSON.stringify(userData)
+    const response = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify(userData),
     });
     //console.log(response);
     if (!response.ok) {
       if (response.status === 401) {
-        alert('User not found or password is incorrect');
+        alert("User not found or password is incorrect");
         return false;
       }
     }
-  
+
     return true;
-  }
+  };
 
   return (
     <main className="w-full max-h-screen  bg-white text-black">
@@ -91,7 +91,7 @@ export default function LogIn() {
                     >
                       Email
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-sm">
+                    <div className="mt-1  flex justify-between relative rounded-md shadow-sm">
                       <input
                         type="email"
                         id="email"
@@ -101,13 +101,14 @@ export default function LogIn() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <span
-                          className="text-gray-500 sm:text-sm"
-                          title="Need help?"
-                        >
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"></div>
+                      <div
+                        className="tooltip flex items-center justify-center ml-2 "
+                        data-tip="please enter your univeristy email"
+                      >
+                        <button className="btn bg-red-800    text-white ">
                           ?
-                        </span>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -118,7 +119,7 @@ export default function LogIn() {
                     >
                       Password
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-md">
+                    <div className="mt-1 relative flex justify-between rounded-md shadow-md">
                       <input
                         type="password"
                         id="password"
@@ -127,6 +128,14 @@ export default function LogIn() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
+                      <div
+                        className="tooltip flex items-center justify-center ml-2 "
+                        data-tip="Please enter a password of length 8 character or greater"
+                      >
+                        <button className="btn bg-red-800    text-white ">
+                          ?
+                        </button>
+                      </div>
                     </div>
                   </div>
 
