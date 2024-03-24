@@ -27,7 +27,11 @@ export default function Home() {
           <NavBar></NavBar>
         </div>
         <div className=" p-10">
-          <h1 className="text-red-800 text-xl font-black">Anoucement</h1>
+          <h1 className="text-red-800 text-xl font-black">
+            {" "}
+            {language == "french" && "Annonce"}
+            {language == "english" && "Announcement"}
+          </h1>
           {language == "english" && (
             <p className="text-black pt-10">
               The University Sports Complex is thrilled to announce the launch
@@ -66,7 +70,7 @@ export default function Home() {
           )}
         </div>
         <div>
-          <GameSlider></GameSlider>
+          <GameSlider prop={language}></GameSlider>
         </div>
       </div>
     </main>

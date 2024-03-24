@@ -5,6 +5,7 @@ const activities = {
       name: "Basketball",
       days: [0, 2, 4],
       times: [1],
+      img: "/images/image1.jpeg",
       description:
         "Basketball is a team sport in which two teams, most commonly of five players each, opposing one another on a rectangular court, compete with the primary objective of shooting a basketball through the defender's hoop while preventing the opposing team from shooting through their own hoop.",
     },
@@ -13,6 +14,7 @@ const activities = {
       name: "Soccer",
       days: [1, 3],
       times: [0, 2],
+      img: "/images/scoccer.jpg",
       description:
         "Soccer is a team sport played with a spherical ball between two teams of 11 players. It is played by approximately 250 million players in over 200 countries and dependencies, making it the world's most popular sport.",
     },
@@ -21,6 +23,7 @@ const activities = {
       name: "Swimming",
       days: [2, 3, 4],
       times: [3],
+      img: "/images/swimg.jpg",
       description:
         "Swimming is an individual or team racing sport that requires the use of one's entire body to move through water. The sport takes place in pools or open water.",
     },
@@ -29,6 +32,7 @@ const activities = {
       name: "Tennis",
       days: [0, 2, 4],
       times: [0, 2],
+      img: "/images/tennis.jpg",
       description:
         "Tennis is a racket sport that can be played individually against a single opponent or between two teams of two players each. Each player uses a tennis racket that is strung with cord to strike a hollow rubber ball covered with felt over or around a net and into the opponent's court.",
     },
@@ -37,6 +41,7 @@ const activities = {
       name: "Volleyball",
       days: [1, 3],
       times: [1],
+      img: "/images/volleyball.jpg",
       description:
         "Volleyball is a team sport in which two teams of six players are separated by a net. Each team tries to score points by grounding a ball on the other team's court under organized rules.",
     },
@@ -45,6 +50,7 @@ const activities = {
       name: "Baseball",
       days: [0, 2, 4],
       times: [1],
+      img: "/images/baseball.webp",
       description:
         "Baseball is a bat-and-ball game played between two opposing teams who take turns batting and fielding. The game proceeds when a player on the fielding team, called the pitcher, throws a ball which a player on the batting team tries to hit with a bat.",
     },
@@ -53,6 +59,7 @@ const activities = {
       name: "Football",
       days: [1, 3],
       times: [0, 2],
+      img: "/images/football.webp",
       description:
         "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used.",
     },
@@ -61,6 +68,7 @@ const activities = {
       name: "Golf",
       days: [0, 1, 2],
       times: [3],
+      img: "/images/golf.jpeg",
       description:
         "Golf is a club-and-ball sport in which players use various clubs to hit balls into a series of holes on a course in as few strokes as possible.",
     },
@@ -69,6 +77,7 @@ const activities = {
       name: "Hockey",
       days: [0, 2, 4],
       times: [0, 2],
+      img: "/images/image3.jpg",
       description:
         "Hockey is a sport in which two teams play against each other by trying to manoeuvre a ball or a puck into the opponent's goal using a hockey stick.",
     },
@@ -95,6 +104,7 @@ const activities = {
       name: "Basket-ball",
       days: [0, 2, 4],
       times: [1],
+      img: "/images/image1.jpeg",
       description:
         "Le basket-ball est un sport d'équipe dans lequel deux équipes, le plus souvent composées de cinq joueurs chacune, s'affrontant sur un terrain rectangulaire, s'affrontent avec pour objectif principal de tirer un ballon de basket à travers le cerceau du défenseur tout en empêchant l'équipe adverse de tirer à travers son propre cerceau",
     },
@@ -103,6 +113,7 @@ const activities = {
       name: "Football",
       days: [1, 3],
       times: [0, 2],
+      img: "/images/scoccer.jpg",
       description:
         "Le football est un sport d'équipe joué avec un ballon sphérique entre deux équipes de 11 joueurs. Il est pratiqué par environ 250 millions de joueurs dans plus de 200 pays et dépendances, ce qui en fait le sport le plus populaire au monde.",
     },
@@ -111,6 +122,7 @@ const activities = {
       name: "Natation",
       days: [2, 3, 4],
       times: [3],
+      img: "/images/swimg.jpg",
       description:
         "La natation est un sport de course individuel ou en équipe qui nécessite l'utilisation de tout le corps pour se déplacer dans l'eau. Ce sport se déroule en piscine ou en eau libre.",
     },
@@ -119,6 +131,7 @@ const activities = {
       name: "Tennis",
       days: [0, 2, 4],
       times: [0, 2],
+      img: "/images/tennis.jpg",
       description:
         "Le tennis est un sport de raquette qui peut être joué individuellement contre un seul adversaire ou entre deux équipes de deux joueurs chacune. Chaque joueur utilise une raquette de tennis enfilée avec une corde pour frapper une balle creuse en caoutchouc recouverte de feutre sur ou autour d'un filet et dans le camp adverse.",
     },
@@ -127,6 +140,7 @@ const activities = {
       name: "Volley-ball",
       days: [1, 3],
       times: [1],
+      img: "/images/volleyball.jpg",
       description:
         "Le volley-ball est un sport d'équipe dans lequel deux équipes de six joueurs sont séparées par un filet. Chaque équipe tente de marquer des points en faisant atterrir un ballon sur le terrain de l'autre équipe selon des règles organisées.",
     },
@@ -135,6 +149,7 @@ const activities = {
       name: "Base-ball",
       days: [0, 2, 4],
       times: [1],
+      img: "/images/baseball.webp",
       description:
         "Le baseball est un jeu de batte et de balle joué entre deux équipes adverses qui frappent et alignent à tour de rôle. Le jeu se déroule lorsqu'un joueur de l'équipe défensive, appelé lanceur, lance une balle qu'un joueur de l'équipe au bâton tente de frapper. avec une batte.",
     },
@@ -143,6 +158,7 @@ const activities = {
       name: "football américain",
       days: [1, 3],
       times: [0, 2],
+      img: "/images/football.webp",
       description:
         "Le football est une famille de sports d'équipe qui consistent, à des degrés divers, à taper dans un ballon pour marquer un but. Sans réserve, le mot football désigne normalement la forme de football la plus populaire là où le mot est utilisé.",
     },
@@ -150,7 +166,9 @@ const activities = {
       id: 7,
       name: "Golf",
       days: [0, 1, 2],
+
       times: [3],
+      img: "/images/golf.jpeg",
       description:
         "Le golf est un sport de club et de balle dans lequel les joueurs utilisent différents clubs pour frapper des balles dans une série de trous sur un parcours en aussi peu de coups que possible.",
     },
@@ -159,6 +177,7 @@ const activities = {
       name: "Hockey",
       days: [0, 2, 4],
       times: [0, 2],
+      img: "/images/image3.jpg",
       description:
         "Le hockey est un sport dans lequel deux équipes s'affrontent en essayant de manœuvrer une balle ou une rondelle dans le but adverse à l'aide d'un bâton de hockey.",
     },

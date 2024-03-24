@@ -169,7 +169,7 @@ export default function Home() {
                         <div className="flex-shrink-0">
                           <Image
                             className="h-48 w-full object-cover"
-                            src={`/images/Intramural.jpg`}
+                            src={activity.img}
                             alt=""
                             width={384}
                             height={384}

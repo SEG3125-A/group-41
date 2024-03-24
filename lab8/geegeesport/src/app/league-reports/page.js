@@ -59,7 +59,7 @@ export default function Home() {
                 </div> */}
 
             {/* Adding the charts */}
-            <div className="flex flex-col justify-center items-center space-y-4 py-4">
+            <div className="flex flex-row justify-center items-center space-y-4 py-4">
               <div className="w-full max-w-lg">
                 <div className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center">
                   <h2 className="text-center text-lg font-bold mb-4">

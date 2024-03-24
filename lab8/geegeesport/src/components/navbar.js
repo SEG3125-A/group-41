@@ -76,17 +76,17 @@ export default function NavBar() {
             </a>
           </li>
           {loggedIn && (
-          <li
-            className={
-              pathname == "/my-activities"
-                ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
-                : "ml-5 mr-5"
-            }
-          >
-            <a href="/my-activities">
-              <p>My activities</p>
-            </a>
-          </li>
+            <li
+              className={
+                pathname == "/my-activities"
+                  ? "bg-red-800 text-white  pl-5 p-4 pr-5 rounded-xl"
+                  : "ml-5 mr-5"
+              }
+            >
+              <a href="/my-activities">
+                <p>My Activities</p>
+              </a>
+            </li>
           )}
           <li
             className={
