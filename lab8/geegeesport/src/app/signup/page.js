@@ -91,7 +91,7 @@ export default function LogIn() {
                     >
                       Email
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
+                    <div className="mt-1  flex justify-between relative rounded-md shadow-sm">
                       <input
                         type="email"
                         id="email"
@@ -101,13 +101,14 @@ export default function LogIn() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <span
-                          className="text-gray-500 sm:text-sm"
-                          title="Need help?"
-                        >
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"></div>
+                      <div
+                        className="tooltip flex items-center justify-center ml-2 "
+                        data-tip="please enter your univeristy email"
+                      >
+                        <button className="btn bg-red-800    text-white ">
                           ?
-                        </span>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -118,7 +119,7 @@ export default function LogIn() {
                     >
                       Phone Number
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
+                    <div className="mt-1 relative flex justify-between rounded-md shadow-sm">
                       <input
                         type="phoneNumber"
                         id="phoneNumber"
@@ -127,7 +128,16 @@ export default function LogIn() {
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
                       />
-                    </div>
+                  
+                      <div
+                        className="tooltip flex items-center justify-center ml-2 "
+                        data-tip="please enter your phone number in format ***-***-****"
+                      >
+                        <button className="btn bg-red-800    text-white ">
+                          ?
+                        </button>
+                      </div>
+                      </div>
                   </div>
                   <div className="mb-6">
                     <label
@@ -136,7 +146,7 @@ export default function LogIn() {
                     >
                       Password
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
+                    <div className="mt-1  flex justify-between relative rounded-md shadow-sm">
                       <input
                         type="password"
                         id="password"
@@ -145,6 +155,14 @@ export default function LogIn() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
+                      <div
+                        className="tooltip flex items-center justify-center ml-2 "
+                        data-tip="Please enter a password of length 8 character or greater"
+                      >
+                        <button className="btn bg-red-800    text-white ">
+                          ?
+                        </button>
+                      </div>
                     </div>
                   </div>
 
@@ -155,7 +173,7 @@ export default function LogIn() {
                     >
                       Confirm Password
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-xl outline-10">
+                    <div className="mt-1  flex justify-between relative rounded-md shadow-sm">
                       <input
                         type="confirmPassword"
                         id="confirmPassword"
@@ -164,6 +182,14 @@ export default function LogIn() {
                         onChange={(e) => setPwdConfirm(e.target.value)}
                         required
                       />
+                       <div
+                        className="tooltip flex items-center justify-center ml-2 "
+                        data-tip="Please re-enter your password exactly as written before"
+                      >
+                        <button className="btn bg-red-800    text-white ">
+                          ?
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center justify-between mb-6">

@@ -131,7 +131,7 @@ export default function LogIn() {
                       {/*tool tip start*/}
                       <div
                         className="tooltip flex items-center justify-center ml-2 "
-                        data-tip="Please enter a password of length 8 character or greater"
+                        data-tip="Contact admin@uottawa.ca if you have forgotten your password"
                       >
                         <button className="btn bg-red-800    text-white ">
                           ?
