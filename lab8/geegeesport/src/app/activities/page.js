@@ -67,7 +67,7 @@ export default function Home() {
                   <select
                     id="time"
                     name="time"
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="mt-1 block w-full pl-3 bg-white pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     onChange={(e) => setTime(e.target.value)}
                   >
                     <option value="-1" id="-1">
@@ -91,12 +91,12 @@ export default function Home() {
                     {/* List of checkboxes for each day */}
                     <div className="mt-4 space-y-4">
                       {activities.getDays(language).map((day, index) => (
-                        <div key={index} className="flex items-center">
+                        <div key={index} className="flex  items-center">
                           <input
                             id={day}
                             name={day}
                             type="checkbox"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                            className="focus:ring-indigo-500 bg-white h-4 w-4 text-indigo-600 border-gray-300 text-white rounded"
                             onChange={(e) =>
                               setDay(
                                 e.target.checked
@@ -107,7 +107,7 @@ export default function Home() {
                           />
                           <label
                             htmlFor={index}
-                            className="ml-3 block text-sm font-medium text-gray-700"
+                            className="ml-3 block text-sm  font-medium text-gray-700"
                           >
                             {day}
                           </label>
@@ -150,7 +150,7 @@ export default function Home() {
                     <input
                       id="search"
                       name="search"
-                      className="block w-full pl-10 pr-3 py-2 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                      className="block w-full pl-10 pr-3 py-2 bg-white border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                       placeholder="Search"
                       type="search"
                       onChange={(e) => setSearch(e.target.value)}

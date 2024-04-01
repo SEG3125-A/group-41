@@ -95,7 +95,7 @@ export default function LogIn() {
                       <input
                         type="email"
                         id="email"
-                        className="block w-full pl-7 p-2 pr-12 sm:text-sm border-gray-300 rounded-md"
+                        className="block w-full bg-white pl-7 p-2 pr-12 sm:text-sm border-gray-300 rounded-md"
                         placeholder="name@uottawa.ca"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -123,11 +123,12 @@ export default function LogIn() {
                       <input
                         type="password"
                         id="password"
-                        className="block w-full p-2 sm:text-sm border-gray-300 rounded-md"
+                        className="block w-full bg-white p-2 sm:text-sm border-gray-300 rounded-md"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
+                      {/*tool tip start*/}
                       <div
                         className="tooltip flex items-center justify-center ml-2 "
                         data-tip="Please enter a password of length 8 character or greater"
@@ -136,6 +137,7 @@ export default function LogIn() {
                           ?
                         </button>
                       </div>
+                      {/*tool tip end*/}
                     </div>
                   </div>
 
